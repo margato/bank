@@ -1,7 +1,12 @@
 package br.unesp.banco.core.db.operation;
 
-public interface Entity<K> {
-    static String getTableName() {
-        return null;
-    }
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Entity {
+    String table() default "";
 }

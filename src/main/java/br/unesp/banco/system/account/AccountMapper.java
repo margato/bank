@@ -1,5 +1,6 @@
 package br.unesp.banco.system.account;
 
+import br.unesp.banco.core.db.operation.Entity;
 import br.unesp.banco.core.db.operation.QueryMapper;
 
 import java.sql.ResultSet;
@@ -19,6 +20,6 @@ public class AccountMapper implements QueryMapper<Account> {
 
     @Override
     public String toQuery(Account account) {
-        return String.format("INSERT INTO %s (number, password) VALUES ('%s', '%s')", Account.getTableName(), account.getNumber(), account.getPassword());
+        return String.format("INSERT INTO %s (number, password) VALUES ('%s', '%s')", Account.class.getAnnotation(Entity.class).table(), account.getNumber(), account.getPassword());
     }
 }
