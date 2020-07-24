@@ -99,7 +99,6 @@ hs_err_pid*
 
 .idea/artifacts/
 src/main/java/META-INF/
-src/main/java/br/unesp/banco/
 src/main/resources/
 src/test/
 target/generated-sources/
