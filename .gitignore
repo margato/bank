@@ -97,3 +97,9 @@ fabric.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+.idea/artifacts/
+src/main/java/META-INF/
+src/main/java/br/unesp/banco/system/
+src/main/resources/
+src/test/
+target/generated-sources/

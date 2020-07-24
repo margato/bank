@@ -1,4 +1,4 @@
-package br.unesp.banco.utils.ui;
+package br.unesp.banco.core.util.ui;
 
 import br.unesp.banco.ui.interfaces.Screen;
 

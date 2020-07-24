@@ -1,15 +1,15 @@
 package br.unesp.banco.ui;
 
-import br.unesp.banco.utils.ui.JFrameManager;
-import br.unesp.banco.utils.ui.JFrameLoader;
-import br.unesp.banco.utils.Logger;
+import br.unesp.banco.core.util.ui.JFrameManager;
+import br.unesp.banco.core.util.ui.JFrameLoader;
+import br.unesp.banco.core.util.Logger;
 
 import javax.swing.*;
 
 public class BankApplication {
 
     private JFrame frame;
-    private JFrameManager frameManager;
+    private final JFrameManager frameManager;
 
     public BankApplication() {
         frame = new JFrame("Bank");
@@ -25,8 +25,7 @@ public class BankApplication {
     }
 
     public void run() {
-        Logger.logUi("Iniciando");
-
+        Logger.logUi("Iniciando", LoginScreen.class);
         JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
     }
 

@@ -1,17 +1,13 @@
 package br.unesp.banco.ui;
 
 import br.unesp.banco.ui.interfaces.Screen;
-import br.unesp.banco.utils.Logger;
-import br.unesp.banco.utils.ui.JFrameLoader;
-import br.unesp.banco.utils.ui.JFrameManager;
-import br.unesp.banco.utils.ui.Popup;
+import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.util.ui.Clipboard;
+import br.unesp.banco.core.util.ui.JFrameLoader;
+import br.unesp.banco.core.util.ui.JFrameManager;
+import br.unesp.banco.core.util.ui.Popup;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class OpenAccountScreen extends Screen {
     private JPanel mainPanel;
@@ -26,7 +22,9 @@ public class OpenAccountScreen extends Screen {
         openAccountButton.addActionListener(e -> {
             JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
             String accountNumber = "00000";
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(accountNumber), null);
+
+            Clipboard.copy(accountNumber);
+
             Popup.show("Nova conta bancária",
                        String.format("<html>" +
                                              "<h1>Conta criada</h1>" +
@@ -34,14 +32,13 @@ public class OpenAccountScreen extends Screen {
                                              "<p>Agora você já pode acessá-la<br/></p>" +
                                              "</html>", accountNumber),
                        "Copiar nº da conta para a área de transferência",
-                       () -> {
-                           Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(accountNumber), null);
-                           return null;
-                       });
+                       () -> (Void) Clipboard.copy(accountNumber));
         });
     }
 
     public void addStyle() {
+        Logger.logUi("Carregando estilos", OpenAccountScreen.class);
+
         passwordInput.setSize(passwordInput.getWidth(), 100);
         passwordInput.setBorder(BorderFactory.createCompoundBorder(
                 passwordInput.getBorder(),

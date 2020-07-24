@@ -1,4 +1,4 @@
-package br.unesp.banco.utils.ui;
+package br.unesp.banco.core.util.ui;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,9 +1,9 @@
 package br.unesp.banco.ui;
 
 import br.unesp.banco.ui.interfaces.Screen;
-import br.unesp.banco.utils.Logger;
-import br.unesp.banco.utils.ui.JFrameLoader;
-import br.unesp.banco.utils.ui.JFrameManager;
+import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.util.ui.JFrameLoader;
+import br.unesp.banco.core.util.ui.JFrameManager;
 
 import javax.swing.*;
 
@@ -27,6 +27,7 @@ public class LoginScreen extends Screen {
         openAccountButton.addActionListener(e -> JFrameLoader.load(frameManager, OpenAccountScreen.class, "Abrir uma nova conta"));
     }
 
+    //TODO ADICIONAR HORIZONTAL SPACE
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
@@ -34,7 +35,7 @@ public class LoginScreen extends Screen {
 
     @Override
     public void addStyle() {
-        Logger.logUi("Carregando estilos");
+        Logger.logUi("Carregando estilos", LoginScreen.class);
         // Padding
         accountInput.setSize(accountInput.getWidth(), 100);
         accountInput.setBorder(BorderFactory.createCompoundBorder(

@@ -1,7 +1,6 @@
-package br.unesp.banco.utils.ui;
+package br.unesp.banco.core.util.ui;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.concurrent.Callable;
 
