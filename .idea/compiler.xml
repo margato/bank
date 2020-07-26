@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="banco" />
+        <module name="banco-swing" />
       </profile>
     </annotationProcessing>
   </component>

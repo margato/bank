@@ -21,12 +21,12 @@ public class Main {
         bankApplication.run();
 
         AccountRepository accountRepository = new AccountRepository(mysql.getConnection(), new AccountMapper());
+        accountRepository.create(new Account("1236969", "123"));
 
         List<Account> all = accountRepository.findAll();
         System.out.println(all);
         System.out.println(accountRepository.findById(1L));
 
-        accountRepository.create(new Account("1236969", "123"));
     }
 
 }
