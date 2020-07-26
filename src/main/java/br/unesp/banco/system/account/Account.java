@@ -2,15 +2,12 @@ package br.unesp.banco.system.account;
 
 import br.unesp.banco.core.db.operation.Entity;
 
-public class Account implements Entity<Long> {
+@Entity(table = "accounts")
+public class Account  {
     private Long id;
     private String number;
     private String password;
 //    private Double balance; TODO ADICIONAR SALDO
-
-    static String getTableName() {
-        return "accounts";
-    }
 
     public Long getId() {
         return id;
@@ -52,4 +49,5 @@ public class Account implements Entity<Long> {
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }

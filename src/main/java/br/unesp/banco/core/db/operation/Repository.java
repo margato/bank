@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repository<K, T extends Entity> implements Crud<K, T> {
+public class Repository<K, T> implements Crud<K, T> {
 
     private final Connection connection;
     private final String tableName;
