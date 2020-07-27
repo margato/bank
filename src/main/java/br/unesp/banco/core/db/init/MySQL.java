@@ -13,13 +13,11 @@ public class MySQL {
     public MySQL() throws SQLException {
         Credential credential = new Credential();
         String url = String.format("jdbc:mysql://%s", credential.getHost());
-        Logger.logDb(url);
 
         connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
         String createDatabaseIfNotExists = String.format("CREATE DATABASE IF NOT EXISTS %s", credential.getDatabase());
 
         connection.prepareStatement(createDatabaseIfNotExists).execute();
-        Logger.logDb(createDatabaseIfNotExists);
 
         url += "/" + credential.getDatabase();
         connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
@@ -28,10 +26,6 @@ public class MySQL {
 
     public Connection getConnection() {
         return connection;
-    }
-
-    public void setConnection(Connection connection) {
-        this.connection = connection;
     }
 
     @Override

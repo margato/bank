@@ -7,7 +7,7 @@ public class Logger {
     }
 
     public static void logDb(String message) {
-        System.out.printf("\n[DB] %s\n\n", message);
+        System.out.printf("[DB] %s\n", message);
     }
 
     public static void logInput(String message) {
