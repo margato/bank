@@ -53,7 +53,7 @@ public class Repository<K, T> implements Crud<K, T> {
     public Optional<T> findByAnd(Map<String, Object> columnValue) throws SQLException {
         StringBuilder sb = new StringBuilder(String.format("SELECT * FROM %s WHERE", tableName));
 
-        columnValue.forEach((key, value) -> sb.append(String.format(" %s = " + value + " AND", key)));
+        columnValue.forEach((key, value) -> sb.append(String.format(" %s = '" + value + "' AND", key)));
 
         String query = sb.toString().substring(0, sb.length() - 3);
 

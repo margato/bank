@@ -33,8 +33,8 @@ public class OpenAccountScreen extends Screen {
 
             try {
                 accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
 
             Popup.show("Nova conta bancária",
