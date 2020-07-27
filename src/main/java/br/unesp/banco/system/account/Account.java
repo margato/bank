@@ -7,7 +7,7 @@ public class Account  {
     private Long id;
     private String number;
     private String password;
-//    private Double balance; TODO ADICIONAR SALDO
+    private Double balance;
 
     public Long getId() {
         return id;
@@ -16,6 +16,7 @@ public class Account  {
     public Account(String number, String password) {
         this.number = number;
         this.password = password;
+        balance = 0D;
     }
 
     public Account() {
@@ -46,8 +47,15 @@ public class Account  {
         return "Account{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", password='" + password + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 }

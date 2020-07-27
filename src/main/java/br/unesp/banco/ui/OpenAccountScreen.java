@@ -1,5 +1,6 @@
 package br.unesp.banco.ui;
 
+import br.unesp.banco.system.account.AccountFacade;
 import br.unesp.banco.ui.interfaces.Screen;
 import br.unesp.banco.core.util.Logger;
 import br.unesp.banco.core.util.ui.Clipboard;
@@ -8,6 +9,8 @@ import br.unesp.banco.core.util.ui.JFrameManager;
 import br.unesp.banco.core.util.ui.Popup;
 
 import javax.swing.*;
+import java.sql.SQLException;
+import java.util.Random;
 
 public class OpenAccountScreen extends Screen {
     private JPanel mainPanel;
@@ -20,10 +23,19 @@ public class OpenAccountScreen extends Screen {
         loginButton.addActionListener(e -> JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta"));
 
         openAccountButton.addActionListener(e -> {
+
             JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
-            String accountNumber = "00000";
+            String accountNumber = String.valueOf(10000000 + new Random().nextInt(90000000));
 
             Clipboard.copy(accountNumber);
+
+            AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
+
+            try {
+                accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
 
             Popup.show("Nova conta bancária",
                        String.format("<html>" +

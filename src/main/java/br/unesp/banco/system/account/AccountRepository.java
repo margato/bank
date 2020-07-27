@@ -12,4 +12,6 @@ public class AccountRepository extends Repository<Long, Account> {
         super(connection, Account.class.getAnnotation(Entity.class).table(), mapper);
     }
 
+
+
 }

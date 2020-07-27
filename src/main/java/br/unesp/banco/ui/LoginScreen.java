@@ -1,11 +1,14 @@
 package br.unesp.banco.ui;
 
+import br.unesp.banco.system.account.Account;
+import br.unesp.banco.system.account.AccountFacade;
 import br.unesp.banco.ui.interfaces.Screen;
 import br.unesp.banco.core.util.Logger;
 import br.unesp.banco.core.util.ui.JFrameLoader;
 import br.unesp.banco.core.util.ui.JFrameManager;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class LoginScreen extends Screen {
     private JTextField accountInput;
@@ -16,14 +19,20 @@ public class LoginScreen extends Screen {
     private JButton openAccountButton;
     private JFrameManager frameManager;
 
-    public LoginScreen() {
-        this.loginButton = new JButton();
 
+    public LoginScreen() {
         loginButton.addActionListener(e -> {
-            String account = accountInput.getText();
+            String number = accountInput.getText();
             String password = new String(passwordInput.getPassword());
-            Logger.logInput(account);
-            Logger.logInput(password);
+
+            AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
+
+            try {
+                Account account = accountFacade.login(number, password);
+                System.out.println(account);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         });
 
         openAccountButton.addActionListener(e -> JFrameLoader.load(frameManager, OpenAccountScreen.class, "Abrir uma nova conta"));

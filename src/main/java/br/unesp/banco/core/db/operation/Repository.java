@@ -5,6 +5,8 @@ import br.unesp.banco.core.util.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class Repository<K, T> implements Crud<K, T> {
 
@@ -33,18 +35,40 @@ public class Repository<K, T> implements Crud<K, T> {
     }
 
     @Override
-    public T findById(K id) throws SQLException {
-        String query = String.format("SELECT * FROM %s WHERE id = %d", tableName, id);
+    public Optional<T> findById(K id) throws SQLException {
+        String query = String.format("SELECT * FROM %s WHERE id = " + id, tableName);
 
         ResultSet resultSet = getResult(query);
         Boolean notExists = !resultSet.next();
 
         if (notExists) {
-            System.out.println("nao encontrado"); // TODO add exception
+            System.out.printf("Entity not found. Table: %s, id: " + id + "%n", tableName);
+            return Optional.empty();
         }
 
-        return mapper.toEntity(resultSet);
+        return Optional.of(mapper.toEntity(resultSet));
     }
+
+    @Override
+    public Optional<T> findByAnd(Map<String, Object> columnValue) throws SQLException {
+        StringBuilder sb = new StringBuilder(String.format("SELECT * FROM %s WHERE", tableName));
+
+        columnValue.forEach((key, value) -> sb.append(String.format(" %s = " + value + " AND", key)));
+
+        String query = sb.toString().substring(0, sb.length() - 3);
+
+        ResultSet resultSet = getResult(query);
+        Boolean notExists = !resultSet.next();
+
+
+        if (notExists) {
+            Logger.logDb("Entity not found.");
+            return Optional.empty();
+        }
+
+        return Optional.of(mapper.toEntity(resultSet));
+    }
+
 
     private ResultSet getResult(String query) throws SQLException {
         ResultSet resultSet = connection.prepareStatement(query).executeQuery();
@@ -62,7 +86,7 @@ public class Repository<K, T> implements Crud<K, T> {
         try (ResultSet result = preparedStatement.getGeneratedKeys()) {
             if (result.next()) {
                 K key = (K) result.getObject(1);
-                return findById(key);
+                return findById(key).get();
             }
         }
 
