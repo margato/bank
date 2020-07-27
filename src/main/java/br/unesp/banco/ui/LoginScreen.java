@@ -17,6 +17,8 @@ public class LoginScreen extends Screen {
     private JFrameManager frameManager;
 
     public LoginScreen() {
+        this.loginButton = new JButton();
+
         loginButton.addActionListener(e -> {
             String account = accountInput.getText();
             String password = new String(passwordInput.getPassword());
