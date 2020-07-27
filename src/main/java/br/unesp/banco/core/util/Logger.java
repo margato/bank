@@ -15,7 +15,7 @@ public class Logger {
     }
 
     public static void log(String tag, String message) {
-        System.out.printf("[%s] %s\n", tag, message);
+        System.out.printf("[%s] %s\n", tag.toUpperCase(), message);
     }
 
 }

@@ -14,7 +14,6 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-
         MySQL mysql = new MySQL();
         DatabaseInitializer.execute(mysql);
 
