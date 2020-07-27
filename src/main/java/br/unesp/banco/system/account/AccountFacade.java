@@ -1,5 +1,7 @@
 package br.unesp.banco.system.account;
 
+import br.unesp.banco.core.util.Logger;
+
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +23,12 @@ public class AccountFacade {
         params.put("number", number);
         params.put("password", password);
 
-
         Optional<Account> account = accountRepository.findByAnd(params);
 
         if (!account.isPresent())
             throw new Exception("Credenciais inválidas");
 
-        System.out.println("Logado!");
+        Logger.log("Login", "Logado!");
         return account.get();
     }
 

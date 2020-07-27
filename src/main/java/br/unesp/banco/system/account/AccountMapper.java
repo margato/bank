@@ -13,7 +13,8 @@ public class AccountMapper implements QueryMapper<Account> {
 
         account.setId(rs.getLong("id"));
         account.setNumber(rs.getString("number"));
-        account.setPassword("------");
+        account.setPassword("protected");
+        account.setBalance(rs.getDouble("balance"));
 
         return account;
     }
