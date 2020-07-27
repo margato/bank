@@ -17,6 +17,7 @@ public class LoginScreen extends Screen {
     private JButton loginButton;
     private JPasswordField passwordInput;
     private JButton openAccountButton;
+    private JLabel errorMessage;
     private JFrameManager frameManager;
 
 
@@ -30,8 +31,8 @@ public class LoginScreen extends Screen {
             try {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (Exception exception) {
+                errorMessage.setText(exception.getMessage());
             }
         });
 

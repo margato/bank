@@ -71,8 +71,8 @@ public class Repository<K, T> implements Crud<K, T> {
 
 
     private ResultSet getResult(String query) throws SQLException {
-        ResultSet resultSet = connection.prepareStatement(query).executeQuery();
         Logger.logDb(query);
+        ResultSet resultSet = connection.prepareStatement(query).executeQuery();
         return resultSet;
     }
 

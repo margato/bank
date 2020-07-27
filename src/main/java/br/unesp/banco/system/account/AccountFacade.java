@@ -13,16 +13,9 @@ public class AccountFacade {
         this.accountRepository = accountRepository;
     }
 
-    public Account login(String number, String password) throws SQLException {
-        if (number.isEmpty()) {
-            System.out.println("Numero invalido");
-            return null;
-        }
-        if (password.isEmpty()) {
-            System.out.println("senha invalida");
-            return null;
-        }
-
+    public Account login(String number, String password) throws Exception {
+        if (number.isEmpty() || password.isEmpty())
+            throw new Exception("Número da conta ou senha inválida");
 
         Map<String, Object> params = new HashMap<>();
         params.put("number", number);
@@ -31,32 +24,27 @@ public class AccountFacade {
 
         Optional<Account> account = accountRepository.findByAnd(params);
 
-        if (!account.isPresent()) {
-            System.out.println("Número da conta ou senha inválida");
-            return null;
-        }
+        if (!account.isPresent())
+            throw new Exception("Credenciais inválidas");
 
         System.out.println("Logado!");
         return account.get();
     }
 
-    public Account createAccount(String number, String password) throws SQLException {
+    public Account createAccount(String number, String password) throws Exception {
         Map<String, Object> params = new HashMap<>();
         params.put("number", number);
 
         Boolean accountAlreadyExists = accountRepository.findByAnd(params).isPresent();
         if (accountAlreadyExists) {
-            System.out.println("ja existe");
-            return null;
+            throw new Exception("Número de conta já existe");
         }
 
         if (number.isEmpty() || number.length() > 8) {
-            System.out.println("Numero invalido");
-            return null;
+            throw new Exception("Número inválido");
         }
         if (password.isEmpty()) {
-            System.out.println("senha invalida");
-            return null;
+            throw new Exception("Senha inválida");
         }
 
         return accountRepository.create(new Account(number, password));
