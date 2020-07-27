@@ -17,6 +17,7 @@ public class OpenAccountScreen extends Screen {
     private JButton openAccountButton;
     private JPasswordField passwordInput;
     private JButton loginButton;
+    private JLabel errorMessage;
     private JFrameManager frameManager;
 
     public OpenAccountScreen() {
@@ -24,28 +25,37 @@ public class OpenAccountScreen extends Screen {
 
         openAccountButton.addActionListener(e -> {
 
-            JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
-            String accountNumber = String.valueOf(10000000 + new Random().nextInt(90000000));
+                    String accountNumber = String.valueOf(10000000 + new Random().nextInt(90000000));
 
-            Clipboard.copy(accountNumber);
+                    Clipboard.copy(accountNumber);
 
-            AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
+                    AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
 
-            try {
-                accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+                    try {
+                        confirmAccount(accountNumber, accountFacade);
 
-            Popup.show("Nova conta bancária",
-                       String.format("<html>" +
-                                             "<h1>Conta criada</h1>" +
-                                             "<p>nº da conta: <b>%s</b></p>" +
-                                             "<p>Agora você já pode acessá-la<br/></p>" +
-                                             "</html>", accountNumber),
-                       "Copiar nº da conta para a área de transferência",
-                       () -> (Void) Clipboard.copy(accountNumber));
+                    } catch (Exception exception) {
+                        errorMessage.setText(exception.getMessage());
+
+                    }
         });
+
+
+
+    }
+
+    public void confirmAccount(String accountNumber, AccountFacade accountFacade) throws Exception {
+        accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
+        JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
+        Popup.show("Nova conta bancária",
+                String.format("<html>" +
+                        "<h1>Conta criada</h1>" +
+                        "<p>nº da conta: <b>%s</b></p>" +
+                        "<p>Agora você já pode acessá-la<br/></p>" +
+                        "</html>", accountNumber),
+                "Copiar nº da conta para a área de transferência",
+                () -> (Void) Clipboard.copy(accountNumber));
+
     }
 
     public void addStyle() {
@@ -56,6 +66,7 @@ public class OpenAccountScreen extends Screen {
                 passwordInput.getBorder(),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
     }
+
 
     public JPanel getMainPanel() {
         return mainPanel;
