@@ -19,7 +19,7 @@ public class JFrameLoader {
             Screen screen = clazz.newInstance();
             JFrame frame = new JFrame(windowTitle);
 
-            frame.setContentPane(screen.getMainPanel());
+            frame.setContentPane(screen.getPainelBody());
             frame.setDefaultCloseOperation(actionOnClose);
             frame.pack();
             frame.setSize(width, height);

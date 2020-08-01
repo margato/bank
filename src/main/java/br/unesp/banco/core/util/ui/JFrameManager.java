@@ -1,5 +1,7 @@
 package br.unesp.banco.core.util.ui;
 
+import br.unesp.banco.system.usercredentials.UserCredentials;
+
 import javax.swing.*;
 import java.util.Map;
 
@@ -7,10 +9,12 @@ public class JFrameManager {
 
     private JFrame frame;
     private Map<String, Object> facades;
+    private UserCredentials userCredentials;
 
-    public JFrameManager(JFrame frame, Map<String, Object> facades) {
+    public JFrameManager(JFrame frame, Map<String, Object> facades, UserCredentials userCredentials) {
         this.frame = frame;
         this.facades = facades;
+        this.userCredentials = userCredentials;
     }
 
     public JFrame getFrame() {
@@ -24,4 +28,13 @@ public class JFrameManager {
     public Map<String, Object> getFacades() {
         return facades;
     }
+
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
+    }
+
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
+    }
 }
+

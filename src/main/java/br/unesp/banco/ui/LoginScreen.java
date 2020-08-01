@@ -2,13 +2,13 @@ package br.unesp.banco.ui;
 
 import br.unesp.banco.system.account.Account;
 import br.unesp.banco.system.account.AccountFacade;
+import br.unesp.banco.system.usercredentials.UserCredentials;
 import br.unesp.banco.ui.interfaces.Screen;
 import br.unesp.banco.core.util.Logger;
 import br.unesp.banco.core.util.ui.JFrameLoader;
 import br.unesp.banco.core.util.ui.JFrameManager;
 
 import javax.swing.*;
-import java.sql.SQLException;
 
 public class LoginScreen extends Screen {
     private JTextField accountInput;
@@ -31,6 +31,8 @@ public class LoginScreen extends Screen {
             try {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
+                frameManager.setUserCredentials(new UserCredentials(number, account.getId()));
+                JFrameLoader.load(frameManager, MainAccountScreen.class,"Banco");
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
             }
@@ -41,7 +43,7 @@ public class LoginScreen extends Screen {
 
     //TODO ADICIONAR HORIZONTAL SPACE
     @Override
-    public JPanel getMainPanel() {
+    public JPanel getPainelBody() {
         return mainPanel;
     }
 
