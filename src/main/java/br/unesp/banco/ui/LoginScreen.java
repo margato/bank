@@ -21,29 +21,30 @@ public class LoginScreen extends Screen {
     private JFrameManager frameManager;
 
 
-    public LoginScreen() {
+    public LoginScreen(JFrameManager frameManager) {
+        this.frameManager = frameManager;
         loginButton.addActionListener(e -> {
             String number = accountInput.getText();
             String password = new String(passwordInput.getPassword());
 
-            AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
+            AccountFacade accountFacade = (AccountFacade) this.frameManager.getFacades().get("account");
 
             try {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
-                frameManager.setUserCredentials(new UserCredentials(number, account.getId()));
-                JFrameLoader.load(frameManager, MainAccountScreen.class,"Banco");
+                this.frameManager.setUserCredentials(new UserCredentials(number, account.getId()));
+                JFrameLoader.load(this.frameManager, MainAccountScreen.class, "Banco");
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
             }
         });
 
-        openAccountButton.addActionListener(e -> JFrameLoader.load(frameManager, OpenAccountScreen.class, "Abrir uma nova conta"));
+        openAccountButton.addActionListener(e -> JFrameLoader.load(this.frameManager, OpenAccountScreen.class, "Abrir uma nova conta"));
     }
 
     //TODO ADICIONAR HORIZONTAL SPACE
     @Override
-    public JPanel getPainelBody() {
+    public JPanel getBodyPanel() {
         return mainPanel;
     }
 
@@ -66,9 +67,5 @@ public class LoginScreen extends Screen {
     public JFrameManager getFrameManager() {
         return frameManager;
     }
-
-    @Override
-    public void setFrameManager(JFrameManager frameManager) {
-        this.frameManager = frameManager;
-    }
 }
+

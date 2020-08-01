@@ -20,8 +20,9 @@ public class OpenAccountScreen extends Screen {
     private JLabel errorMessage;
     private JFrameManager frameManager;
 
-    public OpenAccountScreen() {
-        loginButton.addActionListener(e -> JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta"));
+    public OpenAccountScreen(JFrameManager frameManager) {
+        this.frameManager = frameManager;
+        loginButton.addActionListener(e -> JFrameLoader.load(this.frameManager, LoginScreen.class, "Acessar conta"));
 
         openAccountButton.addActionListener(e -> {
 
@@ -29,7 +30,7 @@ public class OpenAccountScreen extends Screen {
 
                     Clipboard.copy(accountNumber);
 
-                    AccountFacade accountFacade = (AccountFacade) frameManager.getFacades().get("account");
+                    AccountFacade accountFacade = (AccountFacade) this.frameManager.getFacades().get("account");
 
                     try {
                         confirmAccount(accountNumber, accountFacade);
@@ -68,7 +69,7 @@ public class OpenAccountScreen extends Screen {
     }
 
 
-    public JPanel getPainelBody() {
+    public JPanel getBodyPanel() {
         return mainPanel;
     }
 
@@ -77,8 +78,5 @@ public class OpenAccountScreen extends Screen {
         return this.frameManager;
     }
 
-    @Override
-    public void setFrameManager(JFrameManager frameManager) {
-        this.frameManager = frameManager;
-    }
+
 }

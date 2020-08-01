@@ -6,22 +6,19 @@ import br.unesp.banco.ui.interfaces.Screen;
 import javax.swing.*;
 
 public class MainAccountScreen extends Screen {
-    private JButton saldoButton;
-    private JButton extratoButton;
-    private JButton saqueButton;
-    private JButton transfButton;
-    private JPanel PainelBody;
+    private JButton bankStatementButton;
+    private JButton withdrawButton;
+    private JButton transferButton;
+    private JPanel bodyPanel;
     private JPanel PainelInfo;
     private JLabel contaNameLabel;
-    private JPanel PainelPrinc;
+    private JPanel mainPanel;
     private JFrameManager frameManager;
     private JPanel painelBts;
-    private String ct_name;
+    public MainAccountScreen(JFrameManager frameManager) {
+        this.frameManager = frameManager;
+        contaNameLabel.setText(String.format("Conta: %s",this. frameManager.getUserCredentials().getAccount_num()));
 
-    public MainAccountScreen(){
-        ct_name = String.format("Conta: %s",frameManager.getUserCredentials().getAccount_num());
-        System.out.println(ct_name);
-        contaNameLabel.setText(ct_name);
 
     }
 
@@ -31,8 +28,8 @@ public class MainAccountScreen extends Screen {
     }
 
     @Override
-    public JPanel getPainelBody() {
-        return PainelBody;
+    public JPanel getBodyPanel() {
+        return bodyPanel;
     }
 
     @Override
@@ -40,9 +37,5 @@ public class MainAccountScreen extends Screen {
         return this.frameManager;
     }
 
-    @Override
-    public void setFrameManager(JFrameManager frameManager) {
-        this.frameManager = frameManager;
 
-    }
 }

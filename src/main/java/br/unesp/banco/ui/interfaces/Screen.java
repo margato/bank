@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public abstract class Screen {
     public abstract void addStyle();
-    public abstract JPanel getPainelBody();
+    public abstract JPanel getBodyPanel();
     public abstract JFrameManager getFrameManager();
-    public abstract void setFrameManager(JFrameManager frameManager);
+//    public abstract void setFrameManager(JFrameManager frameManager);
 }
