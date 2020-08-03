@@ -8,7 +8,7 @@ import java.util.Map;
 public class JFrameManager {
 
     private JFrame frame;
-    private Map<String, Object> facades;
+    private final Map<String, Object> facades;
     private UserCredentials userCredentials;
 
     public JFrameManager(JFrame frame, Map<String, Object> facades, UserCredentials userCredentials) {
