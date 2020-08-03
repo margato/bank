@@ -13,13 +13,11 @@ public class MainAccountScreen extends Screen {
     private JPanel PainelInfo;
     private JLabel contaNameLabel;
     private JPanel mainPanel;
-    private JFrameManager frameManager;
     private JPanel painelBts;
+
     public MainAccountScreen(JFrameManager frameManager) {
-        this.frameManager = frameManager;
-        contaNameLabel.setText(String.format("Conta: %s",this. frameManager.getUserCredentials().getAccount_num()));
-
-
+        super(frameManager);
+        contaNameLabel.setText(String.format("Conta: %s", this.getFrameManager().getUserCredentials().getAccount_num()));
     }
 
     @Override
@@ -31,11 +29,5 @@ public class MainAccountScreen extends Screen {
     public JPanel getBodyPanel() {
         return bodyPanel;
     }
-
-    @Override
-    public JFrameManager getFrameManager() {
-        return this.frameManager;
-    }
-
 
 }

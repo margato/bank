@@ -18,31 +18,29 @@ public class LoginScreen extends Screen {
     private JPasswordField passwordInput;
     private JButton openAccountButton;
     private JLabel errorMessage;
-    private JFrameManager frameManager;
 
 
     public LoginScreen(JFrameManager frameManager) {
-        this.frameManager = frameManager;
+        super(frameManager);
         loginButton.addActionListener(e -> {
             String number = accountInput.getText();
             String password = new String(passwordInput.getPassword());
 
-            AccountFacade accountFacade = (AccountFacade) this.frameManager.getFacades().get("account");
+            AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
             try {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
-                this.frameManager.setUserCredentials(new UserCredentials(number, account.getId()));
-                JFrameLoader.load(this.frameManager, MainAccountScreen.class, "Banco");
+                getFrameManager().setUserCredentials(new UserCredentials(number, account.getId()));
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, "Banco");
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
             }
         });
 
-        openAccountButton.addActionListener(e -> JFrameLoader.load(this.frameManager, OpenAccountScreen.class, "Abrir uma nova conta"));
+        openAccountButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), OpenAccountScreen.class, "Abrir uma nova conta"));
     }
 
-    //TODO ADICIONAR HORIZONTAL SPACE
     @Override
     public JPanel getBodyPanel() {
         return mainPanel;
@@ -61,11 +59,6 @@ public class LoginScreen extends Screen {
         passwordInput.setBorder(BorderFactory.createCompoundBorder(
                 passwordInput.getBorder(),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-    }
-
-    @Override
-    public JFrameManager getFrameManager() {
-        return frameManager;
     }
 }
 

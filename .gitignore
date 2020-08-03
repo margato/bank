@@ -103,3 +103,5 @@ src/main/resources/
 src/test/
 target/generated-sources/
 .migration_version.yaml
+
+database.yaml

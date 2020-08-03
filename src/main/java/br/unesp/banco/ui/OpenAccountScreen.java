@@ -9,7 +9,6 @@ import br.unesp.banco.core.util.ui.JFrameManager;
 import br.unesp.banco.core.util.ui.Popup;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.Random;
 
 public class OpenAccountScreen extends Screen {
@@ -18,44 +17,41 @@ public class OpenAccountScreen extends Screen {
     private JPasswordField passwordInput;
     private JButton loginButton;
     private JLabel errorMessage;
-    private JFrameManager frameManager;
 
     public OpenAccountScreen(JFrameManager frameManager) {
-        this.frameManager = frameManager;
-        loginButton.addActionListener(e -> JFrameLoader.load(this.frameManager, LoginScreen.class, "Acessar conta"));
+        super(frameManager);
+        loginButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Acessar conta"));
 
         openAccountButton.addActionListener(e -> {
 
-                    String accountNumber = String.valueOf(10000000 + new Random().nextInt(90000000));
+            String accountNumber = String.valueOf(10000000 + new Random().nextInt(90000000));
 
-                    Clipboard.copy(accountNumber);
+            Clipboard.copy(accountNumber);
 
-                    AccountFacade accountFacade = (AccountFacade) this.frameManager.getFacades().get("account");
+            AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
-                    try {
-                        confirmAccount(accountNumber, accountFacade);
+            try {
+                confirmAccount(accountNumber, accountFacade);
+            } catch (Exception exception) {
+                errorMessage.setText(exception.getMessage());
 
-                    } catch (Exception exception) {
-                        errorMessage.setText(exception.getMessage());
-
-                    }
+            }
         });
-
 
 
     }
 
     public void confirmAccount(String accountNumber, AccountFacade accountFacade) throws Exception {
         accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
-        JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
+        JFrameLoader.load(getFrameManager(), LoginScreen.class, "Acessar conta");
         Popup.show("Nova conta bancária",
-                String.format("<html>" +
-                        "<h1>Conta criada</h1>" +
-                        "<p>nº da conta: <b>%s</b></p>" +
-                        "<p>Agora você já pode acessá-la<br/></p>" +
-                        "</html>", accountNumber),
-                "Copiar nº da conta para a área de transferência",
-                () -> (Void) Clipboard.copy(accountNumber));
+                   String.format("<html>" +
+                                         "<h1>Conta criada</h1>" +
+                                         "<p>nº da conta: <b>%s</b></p>" +
+                                         "<p>Agora você já pode acessá-la<br/></p>" +
+                                         "</html>", accountNumber),
+                   "Copiar nº da conta para a área de transferência",
+                   () -> (Void) Clipboard.copy(accountNumber));
 
     }
 
@@ -72,11 +68,5 @@ public class OpenAccountScreen extends Screen {
     public JPanel getBodyPanel() {
         return mainPanel;
     }
-
-    @Override
-    public JFrameManager getFrameManager() {
-        return this.frameManager;
-    }
-
 
 }
