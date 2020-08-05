@@ -3,3 +3,11 @@ migrations:
     - "CREATE TABLE IF NOT EXISTS accounts (id INT NOT NULL AUTO_INCREMENT, number VARCHAR(8), password VARCHAR(255), PRIMARY KEY (id)) ENGINE=InnoDB"
   1:
     - "ALTER TABLE accounts ADD balance INTEGER"
+  2:
+    -"CREATE TABLE `transaction` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `value` DECIMAL,
+    `typeOp` TEXT(8),
+    `transaction_date` DATE,
+    `account_id` INT NOT NULL
+    );"
