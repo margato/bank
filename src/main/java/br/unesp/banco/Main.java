@@ -27,7 +27,7 @@ public class Main {
         TransactionRepository transactionRepository = new TransactionRepository(mysql.getConnection(), new TransactionMapper());
         TransactionFacade transactionFacade = new TransactionFacade(transactionRepository);
 
-        StatementFacade statementFacade = new StatementFacade(transactionFacade);
+        StatementFacade statementFacade = new StatementFacade();
 
         Map<String, Object> facades = new HashMap<String, Object>() {{
             put("account", accountFacade);

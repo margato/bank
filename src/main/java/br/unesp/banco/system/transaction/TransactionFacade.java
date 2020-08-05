@@ -2,9 +2,7 @@ package br.unesp.banco.system.transaction;
 
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TransactionFacade {
 
@@ -15,9 +13,11 @@ public class TransactionFacade {
     }
 
     public List<Transaction> getAllByAccountId(Long accountId) throws SQLException {
-        Map<String, Object> params = new HashMap<>();
-        params.put("account_id", accountId);
-        return transactionRepository.findAllByAnd(params);
+        return transactionRepository.findAllOrderDesc(accountId);
+    }
+
+    public List<Transaction> getInTheLastTenDays(Long accountId) throws SQLException {
+        return transactionRepository.findAllInTheLastNDays(10, accountId);
     }
 
 //    public Transaction login(String number, String password) throws Exception {

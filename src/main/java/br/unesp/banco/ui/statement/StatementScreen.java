@@ -2,11 +2,13 @@ package br.unesp.banco.ui.statement;
 
 import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.JTablePrinter;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.system.account.Account;
 import br.unesp.banco.system.account.AccountFacade;
 import br.unesp.banco.system.statement.StatementFacade;
 import br.unesp.banco.system.statement.StatementRow;
+import br.unesp.banco.system.transaction.TransactionFacade;
 import br.unesp.banco.system.transaction.TransactionType;
 import br.unesp.banco.ui.main.MainAccountScreen;
 
@@ -24,15 +26,19 @@ public class StatementScreen extends Screen {
     private JLabel balanceLabel;
     private JLabel balance;
     private JButton backButton;
+    private JButton print;
+    private JScrollPane scrollPane;
     private TableModel model;
 
     public StatementScreen(JFrameManager frameManager) throws Exception {
         super(frameManager);
 
         AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
+        TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
         StatementFacade statementFacade = (StatementFacade) getFrameManager().getFacades().get("statement");
 
-        List<StatementRow> statementRows = statementFacade.generateStatement(getFrameManager().getUserCredentials().getId());
+        Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
+        List<StatementRow> statementRows = statementFacade.generateStatement(transactionFacade.getAllByAccountId(account.getId()));
 
         String[] columnNames = {"Data", "Tipo", "Valor"};
         Object[][] data = statementFacade.convertToPureObject(statementRows);
@@ -40,21 +46,18 @@ public class StatementScreen extends Screen {
         model = new DefaultTableModel(data, columnNames);
         statementTable.setModel(model);
 
-        Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
-
         balance.setText(account.getBalance().toString());
-
         backButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), MainAccountScreen.class, "Banco"));
+
+        String header = String.format("Saldo: %s", account.getBalance());
+        List<StatementRow> statementRows10Days = statementFacade.generateStatement(transactionFacade.getInTheLastTenDays(account.getId()));
+        JTable printableTable = new JTable(statementFacade.convertToPureObject(statementRows10Days), columnNames);
+        print.addActionListener(e -> JTablePrinter.print(header, printableTable));
     }
 
     @Override
     public void addStyle() {
-        DefaultTableCellRenderer defaultRenderer = (DefaultTableCellRenderer) statementTable.getTableHeader().getDefaultRenderer();
-
-        defaultRenderer.setHorizontalAlignment(JLabel.LEFT);
-        Font font = defaultRenderer.getFont();
-        defaultRenderer.setFont(font.deriveFont(18));
-
+        int dateColumn = 0;
         int typeColumn = 1;
         int valueColumn = 2;
 
@@ -68,6 +71,31 @@ public class StatementScreen extends Screen {
 
         balance.setBorder(new EmptyBorder(0, 0, 0, 20));
         backButton.setText("< Voltar");
+
+        statementTable.setFocusable(false);
+        statementTable.setRowSelectionAllowed(false);
+
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+
+        renderer.setFont(statementTable.getFont());
+        renderer.setBackground(Color.LIGHT_GRAY);
+        renderer.setForeground(Color.BLACK);
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        DefaultTableCellRenderer rightAlignment = new DefaultTableCellRenderer();
+        rightAlignment.setHorizontalAlignment(SwingConstants.RIGHT);
+
+        DefaultTableCellRenderer centerAlignment = new DefaultTableCellRenderer();
+        centerAlignment.setHorizontalAlignment(SwingConstants.CENTER);
+
+        statementTable.getTableHeader().setDefaultRenderer(renderer);
+        statementTable.getTableHeader().getColumnModel().getColumn(dateColumn).setCellRenderer(centerAlignment);
+        statementTable.getTableHeader().getColumnModel().getColumn(valueColumn).setCellRenderer(rightAlignment);
+        statementTable.getColumnModel().getColumn(valueColumn).setCellRenderer(centerAlignment);
+
+        statementTable.setIntercellSpacing(new Dimension(50, 20));
+        statementTable.setDragEnabled(false);
+
     }
 
     @Override

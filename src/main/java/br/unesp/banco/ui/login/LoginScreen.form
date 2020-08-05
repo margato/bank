@@ -38,7 +38,7 @@
         </constraints>
         <properties>
           <actionCommand value=""/>
-          <background color="-16777216"/>
+          <background color="-14452481"/>
           <borderPainted value="false"/>
           <contentAreaFilled value="true"/>
           <focusPainted value="false"/>

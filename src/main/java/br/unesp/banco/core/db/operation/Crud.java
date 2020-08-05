@@ -8,11 +8,15 @@ import java.util.Optional;
 public interface Crud<K, T> {
 
     List<T> findAll() throws SQLException;
+
     Optional<T> findById(K id) throws SQLException;
+
     Optional<T> findByAnd(Map<String, Object> columnValue) throws SQLException;
 
     List<T> findAllByAnd(Map<String, Object> columnValue) throws SQLException;
 
     T create(T input) throws SQLException;
+
+    List<T> findAllByQuery(String query) throws SQLException;
 
 }

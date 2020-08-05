@@ -15,7 +15,7 @@ public class TransactionMapper implements QueryMapper<Transaction> {
         transaction.setId(rs.getLong("id"));
         transaction.setValue(new Money(rs.getDouble("value"), Currency.REAL));
         transaction.setType(TransactionType.valueOf(rs.getString("type")));
-        transaction.setDate(rs.getDate("date").toLocalDate().atStartOfDay());
+        transaction.setDate(rs.getTimestamp("date").toLocalDateTime());
         transaction.setAccountId(rs.getInt("account_id"));
 
         return transaction;

@@ -1,29 +1,16 @@
 package br.unesp.banco.system.statement;
 
 import br.unesp.banco.system.transaction.Transaction;
-import br.unesp.banco.system.transaction.TransactionFacade;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StatementFacade {
 
-    private final TransactionFacade transactionFacade;
-
-    public StatementFacade(TransactionFacade transactionFacade) {
-        this.transactionFacade = transactionFacade;
-    }
-
-    public List<StatementRow> generateStatement(Long accountId) throws SQLException {
-        List<Transaction> transactions = transactionFacade.getAllByAccountId(accountId);
-
-        List<StatementRow> statementRows = transactions.stream()
-                                                       .map(this::toStatementRow)
-                                                       .collect(Collectors.toList());
-
-
-        return statementRows;
+    public List<StatementRow> generateStatement(List<Transaction> transactions) {
+        return transactions.stream()
+                           .map(this::toStatementRow)
+                           .collect(Collectors.toList());
     }
 
     private StatementRow toStatementRow(Transaction t) {

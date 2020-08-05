@@ -17,7 +17,9 @@ public class Popup {
         button.addActionListener(actionEvent -> {
             JOptionPane.getRootFrame().dispose();
             try {
-                onClick.call();
+                if (onClick != null) {
+                    onClick.call();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

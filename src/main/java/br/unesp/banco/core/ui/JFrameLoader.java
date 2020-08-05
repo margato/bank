@@ -16,6 +16,9 @@ public class JFrameLoader {
     public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, int actionOnClose, int width, int height, String windowTitle, boolean fullscreen) {
         try {
             Screen screen = null;
+            if (frameManager.getFrame() != null)
+                frameManager.getFrame().dispose();
+
             try {
                 screen = clazz.getConstructor(JFrameManager.class).newInstance(frameManager);
             } catch (NoSuchMethodException | InvocationTargetException e) {

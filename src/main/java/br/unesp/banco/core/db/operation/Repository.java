@@ -110,4 +110,17 @@ public class Repository<K, T> implements Crud<K, T> {
         return null;
     }
 
+    @Override
+    public List<T> findAllByQuery(String query) throws SQLException {
+        ResultSet resultSet = getResult(query);
+
+        List<T> resultArray = new ArrayList<>();
+        while (resultSet.next()) {
+            resultArray.add(mapper.toEntity(resultSet));
+        }
+
+        return resultArray;
+    }
+
+
 }
