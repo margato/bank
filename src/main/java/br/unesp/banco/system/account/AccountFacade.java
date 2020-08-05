@@ -1,8 +1,7 @@
 package br.unesp.banco.system.account;
 
-import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.log.Logger;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -49,6 +48,11 @@ public class AccountFacade {
         }
 
         return accountRepository.create(new Account(number, password));
+    }
+
+    public Account getAccount(Long id) throws Exception {
+        return accountRepository.findById(id)
+                                .orElseThrow(() -> new RuntimeException("Conta não existe. ID " + id));
     }
 
 }

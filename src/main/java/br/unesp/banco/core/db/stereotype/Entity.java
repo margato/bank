@@ -1,4 +1,4 @@
-package br.unesp.banco.core.db.operation;
+package br.unesp.banco.core.db.stereotype;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

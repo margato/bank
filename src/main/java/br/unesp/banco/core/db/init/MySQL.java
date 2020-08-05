@@ -1,6 +1,6 @@
 package br.unesp.banco.core.db.init;
 
-import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.log.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,18 +10,25 @@ public class MySQL {
 
     private Connection connection;
 
-    public MySQL() throws SQLException {
+    public MySQL() {
         Credential credential = new Credential();
-        String url = String.format("jdbc:mysql://%s", credential.getHost());
+        String baseUrl = String.format("jdbc:mysql://%s", credential.getHost());
+        String url = String.format("%s?serverTimezone=UTC", baseUrl);
 
-        connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
-        String createDatabaseIfNotExists = String.format("CREATE DATABASE IF NOT EXISTS %s", credential.getDatabase());
+        try {
+            connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
 
-        connection.prepareStatement(createDatabaseIfNotExists).execute();
+            String createDatabaseIfNotExists = String.format("CREATE DATABASE IF NOT EXISTS %s", credential.getDatabase());
 
-        url += "/" + credential.getDatabase();
-        connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
-        Logger.logDb(url);
+            connection.prepareStatement(createDatabaseIfNotExists).execute();
+
+            baseUrl += "/" + credential.getDatabase() + "?serverTimezone=UTC";
+            connection = DriverManager.getConnection(baseUrl, credential.getUser(), credential.getPassword());
+            Logger.logDb(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     public Connection getConnection() {

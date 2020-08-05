@@ -1,4 +1,4 @@
-package br.unesp.banco.core.util;
+package br.unesp.banco.core.log;
 
 public class Logger {
 

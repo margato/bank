@@ -1,6 +1,6 @@
 package br.unesp.banco.system.account;
 
-import br.unesp.banco.core.db.operation.Entity;
+import br.unesp.banco.core.db.stereotype.Entity;
 import br.unesp.banco.system.money.Currency;
 import br.unesp.banco.system.money.Money;
 

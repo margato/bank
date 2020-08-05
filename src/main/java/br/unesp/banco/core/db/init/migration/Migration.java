@@ -1,12 +1,15 @@
 package br.unesp.banco.core.db.init.migration;
 
-import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.log.Logger;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Migration {
 

@@ -3,7 +3,7 @@ package br.unesp.banco.system.money;
 import java.math.BigDecimal;
 
 public class Money implements Exchangeable {
-    private final Currency currency;
+    private Currency currency = Currency.REAL;
     private BigDecimal amount;
 
     public void add(Integer amount) {
@@ -52,6 +52,22 @@ public class Money implements Exchangeable {
     public Money(BigDecimal amount, Currency currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    public Money(Double amount) {
+        this.amount = BigDecimal.valueOf(amount);
+    }
+
+    public Money(Integer amount) {
+        this.amount = BigDecimal.valueOf(amount);
+    }
+
+    public Money(Float amount) {
+        this.amount = BigDecimal.valueOf(amount);
+    }
+
+    public Money(BigDecimal amount) {
+        this.amount = amount;
     }
 
     @Override

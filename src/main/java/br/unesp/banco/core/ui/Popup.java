@@ -1,4 +1,4 @@
-package br.unesp.banco.core.util.ui;
+package br.unesp.banco.core.ui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,9 @@ public class Popup {
         button.addActionListener(actionEvent -> {
             JOptionPane.getRootFrame().dispose();
             try {
-                onClick.call();
+                if (onClick != null) {
+                    onClick.call();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
