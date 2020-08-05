@@ -4,7 +4,7 @@ migrations:
   1:
     - "ALTER TABLE accounts ADD balance INTEGER"
   2:
-    - "CREATE TABLE IF NOT EXISTS  transaction (
+    - "CREATE TABLE IF NOT EXISTS transactions (
         id INT NOT NULL AUTO_INCREMENT,
         value DECIMAL(20,2),
         type TEXT(8),
