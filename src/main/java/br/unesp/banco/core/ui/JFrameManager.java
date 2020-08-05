@@ -1,4 +1,4 @@
-package br.unesp.banco.core.util.ui;
+package br.unesp.banco.core.ui;
 
 import br.unesp.banco.system.usercredentials.UserCredentials;
 

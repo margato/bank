@@ -1,6 +1,4 @@
-package br.unesp.banco.core.util.ui;
-
-import br.unesp.banco.ui.interfaces.Screen;
+package br.unesp.banco.core.ui;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;

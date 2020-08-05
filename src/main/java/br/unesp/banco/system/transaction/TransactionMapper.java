@@ -1,6 +1,5 @@
 package br.unesp.banco.system.transaction;
 
-import br.unesp.banco.core.db.operation.Entity;
 import br.unesp.banco.core.db.operation.QueryMapper;
 
 import java.sql.ResultSet;
@@ -22,6 +21,7 @@ public class TransactionMapper implements QueryMapper<Transaction> {
 
     @Override
     public String toQuery(Transaction transaction) {
-        return String.format("INSERT INTO %s (number, password) VALUES ('%s', '%s')", Transaction.class.getAnnotation(Entity.class).table(), transaction.getNumber(), transaction.getPassword());
+        return "";
+//        return String.format("INSERT INTO %s (number, password) VALUES ('%s', '%s')", Transaction.class.getAnnotation(Entity.class).table(), transaction.getNumber(), transaction.getPassword());
     }
 }

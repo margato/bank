@@ -1,12 +1,12 @@
-package br.unesp.banco.ui;
+package br.unesp.banco.ui.main;
 
-import br.unesp.banco.core.util.ui.JFrameLoader;
-import br.unesp.banco.core.util.ui.JFrameManager;
-import br.unesp.banco.ui.interfaces.Screen;
+
+import br.unesp.banco.core.ui.JFrameLoader;
+import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.Screen;
+import br.unesp.banco.ui.login.LoginScreen;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainAccountScreen extends Screen {
     private JButton bankStatementButton;
@@ -23,7 +23,7 @@ public class MainAccountScreen extends Screen {
         super(frameManager);
         contaNameLabel.setText(String.format("Conta: %s", this.getFrameManager().getUserCredentials().getAccount_num()));
 
-        exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class,"Login"));
+        exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Login"));
 
 
 

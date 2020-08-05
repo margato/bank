@@ -1,10 +1,5 @@
 package br.unesp.banco.system.transaction;
 
-import br.unesp.banco.core.util.Logger;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 public class TransactionFacade {
 

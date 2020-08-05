@@ -1,6 +1,4 @@
-package br.unesp.banco.ui.interfaces;
-
-import br.unesp.banco.core.util.ui.JFrameManager;
+package br.unesp.banco.core.ui;
 
 import javax.swing.*;
 

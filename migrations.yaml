@@ -4,4 +4,13 @@ migrations:
   1:
     - "ALTER TABLE accounts ADD balance INTEGER"
   2:
+    - "CREATE TABLE IF NOT EXISTS  transaction (
+        id INT NOT NULL AUTO_INCREMENT,
+        value DECIMAL(20,2),
+        type TEXT(8),
+        date DATE,
+        account_id INT NOT NULL,
+        PRIMARY KEY (id)
+      ) ENGINE=InnoDB"
+  3:
     - "ALTER TABLE accounts MODIFY balance DECIMAL(20,2)"

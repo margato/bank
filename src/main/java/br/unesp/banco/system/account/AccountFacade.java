@@ -1,8 +1,7 @@
 package br.unesp.banco.system.account;
 
-import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.log.Logger;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

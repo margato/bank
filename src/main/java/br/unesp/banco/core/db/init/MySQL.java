@@ -1,6 +1,6 @@
 package br.unesp.banco.core.db.init;
 
-import br.unesp.banco.core.util.Logger;
+import br.unesp.banco.core.log.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
