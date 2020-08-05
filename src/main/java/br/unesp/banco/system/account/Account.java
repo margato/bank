@@ -1,13 +1,15 @@
 package br.unesp.banco.system.account;
 
 import br.unesp.banco.core.db.operation.Entity;
+import br.unesp.banco.system.money.Currency;
+import br.unesp.banco.system.money.Money;
 
 @Entity(table = "accounts")
 public class Account  {
     private Long id;
     private String number;
     private String password;
-    private Double balance;
+    private Money balance;
 
     public Long getId() {
         return id;
@@ -16,7 +18,7 @@ public class Account  {
     public Account(String number, String password) {
         this.number = number;
         this.password = password;
-        balance = 0D;
+        balance = new Money(0, Currency.REAL);
     }
 
     public Account() {
@@ -51,11 +53,11 @@ public class Account  {
                 '}';
     }
 
-    public Double getBalance() {
+    public Money getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Money balance) {
         this.balance = balance;
     }
 }
