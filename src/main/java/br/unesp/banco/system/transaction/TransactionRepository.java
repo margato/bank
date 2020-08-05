@@ -1,8 +1,8 @@
 package br.unesp.banco.system.transaction;
 
-import br.unesp.banco.core.db.operation.Entity;
 import br.unesp.banco.core.db.operation.QueryMapper;
 import br.unesp.banco.core.db.operation.Repository;
+import br.unesp.banco.core.db.stereotype.Entity;
 
 import java.sql.Connection;
 

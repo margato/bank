@@ -51,13 +51,8 @@ public class Repository<K, T> implements Crud<K, T> {
 
     @Override
     public Optional<T> findByAnd(Map<String, Object> columnValue) throws SQLException {
-        StringBuilder sb = new StringBuilder(String.format("SELECT * FROM %s WHERE", tableName));
+        ResultSet resultSet = applyAnd(columnValue);
 
-        columnValue.forEach((key, value) -> sb.append(String.format(" %s = '" + value + "' AND", key)));
-
-        String query = sb.toString().substring(0, sb.length() - 3);
-
-        ResultSet resultSet = getResult(query);
         Boolean notExists = !resultSet.next();
 
 
@@ -67,6 +62,28 @@ public class Repository<K, T> implements Crud<K, T> {
         }
 
         return Optional.of(mapper.toEntity(resultSet));
+    }
+
+    @Override
+    public List<T> findAllByAnd(Map<String, Object> columnValue) throws SQLException {
+        ResultSet resultSet = applyAnd(columnValue);
+
+        List<T> resultArray = new ArrayList<>();
+        while (resultSet.next()) {
+            resultArray.add(mapper.toEntity(resultSet));
+        }
+
+        return resultArray;
+    }
+
+    private ResultSet applyAnd(Map<String, Object> columnValue) throws SQLException {
+        StringBuilder sb = new StringBuilder(String.format("SELECT * FROM %s WHERE", tableName));
+
+        columnValue.forEach((key, value) -> sb.append(String.format(" %s = '" + value + "' AND", key)));
+
+        String query = sb.toString().substring(0, sb.length() - 3);
+
+        return getResult(query);
     }
 
 

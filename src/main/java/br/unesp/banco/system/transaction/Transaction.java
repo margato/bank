@@ -1,30 +1,30 @@
 package br.unesp.banco.system.transaction;
 
-import br.unesp.banco.core.db.operation.Entity;
-import org.omg.CORBA.TRANSACTION_MODE;
+import br.unesp.banco.core.db.stereotype.Entity;
+import br.unesp.banco.system.money.Money;
 
 import java.time.LocalDateTime;
 
 @Entity(table = "transactions")
 public class Transaction {
 
-
-
-
     private Long id;
-    private Double value;
-    private TransactionType typeOp;
-    private LocalDateTime transactionDate;
+    private Money value;
+    private TransactionType type;
+    private LocalDateTime date;
     private Integer accountId;
 
-    public Transaction(Long id, Double value, TransactionType typeOp, LocalDateTime transactionDate, Integer accountId) {
+    public Transaction(Long id, Money value, TransactionType type, LocalDateTime date, Integer accountId) {
         this.id = id;
         this.value = value;
-        this.typeOp = typeOp;
-        this.transactionDate = transactionDate;
+        this.type = type;
+        this.date = date;
         this.accountId = accountId;
     }
-    public Transaction(){};
+
+    public Transaction() {}
+
+    ;
 
     public Long getId() {
         return id;
@@ -34,28 +34,28 @@ public class Transaction {
         this.id = id;
     }
 
-    public Double getValue() {
+    public Money getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(Money value) {
         this.value = value;
     }
 
-    public TransactionType getTypeOp() {
-        return typeOp;
+    public TransactionType getType() {
+        return type;
     }
 
-    public void setTypeOp(TransactionType typeOp) {
-        this.typeOp = typeOp;
+    public void setType(TransactionType type) {
+        this.type = type;
     }
 
-    public LocalDateTime getTransactionDate() {
-        return transactionDate;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setTransactionDate(LocalDateTime transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public Integer getAccountId() {

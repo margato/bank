@@ -14,3 +14,4 @@ migrations:
       ) ENGINE=InnoDB"
   3:
     - "ALTER TABLE accounts MODIFY balance DECIMAL(20,2)"
+# alterar type date p typé datetime no transactions.date

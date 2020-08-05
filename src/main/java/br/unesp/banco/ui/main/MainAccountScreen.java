@@ -22,7 +22,7 @@ public class MainAccountScreen extends Screen {
 
     public MainAccountScreen(JFrameManager frameManager) {
         super(frameManager);
-        contaNameLabel.setText(String.format("Conta: %s", this.getFrameManager().getUserCredentials().getAccount_num()));
+        contaNameLabel.setText(String.format("Conta: %s", this.getFrameManager().getUserCredentials().getAccountNumber()));
 
         exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Login"));
         bankStatementButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), StatementScreen.class, "Extrato"));

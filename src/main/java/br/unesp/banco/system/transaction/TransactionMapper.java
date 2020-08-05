@@ -1,6 +1,8 @@
 package br.unesp.banco.system.transaction;
 
 import br.unesp.banco.core.db.operation.QueryMapper;
+import br.unesp.banco.system.money.Currency;
+import br.unesp.banco.system.money.Money;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +13,9 @@ public class TransactionMapper implements QueryMapper<Transaction> {
         Transaction transaction = new Transaction();
 
         transaction.setId(rs.getLong("id"));
-//        transaction.setValue(rs.getDouble("value"));
-        transaction.setTypeOp(TransactionType.valueOf(rs.getString("transaction_type")));
-
+        transaction.setValue(new Money(rs.getDouble("value"), Currency.REAL));
+        transaction.setType(TransactionType.valueOf(rs.getString("type")));
+        transaction.setDate(rs.getDate("date").toLocalDate().atStartOfDay());
         transaction.setAccountId(rs.getInt("account_id"));
 
         return transaction;

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="br.unesp.banco.ui.statement.StatementScreen">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <enabled value="true"/>
+      <focusable value="true"/>
+      <font name="IBM Plex Sans" size="18"/>
+      <foreground color="-16777216"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <scrollpane id="f1a96">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <focusable value="false"/>
+          <font name="IBM Plex Sans" size="18"/>
+          <foreground color="-1"/>
+          <verticalScrollBarPolicy value="20"/>
+        </properties>
+        <border type="none">
+          <size top="10" left="10" bottom="10" right="10"/>
+        </border>
+        <children>
+          <component id="f6a26" class="javax.swing.JTable" binding="statementTable">
+            <constraints/>
+            <properties>
+              <autoCreateRowSorter value="true"/>
+              <doubleBuffered value="false"/>
+              <fillsViewportHeight value="true"/>
+              <font name="IBM Plex Sans" size="16"/>
+              <requestFocusEnabled value="false"/>
+              <rowHeight value="40"/>
+              <showVerticalLines value="false"/>
+              <surrendersFocusOnKeystroke value="false"/>
+              <verifyInputWhenFocusTarget value="false"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="87cd6" class="javax.swing.JLabel" binding="balanceLabel">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="IBM Plex Sans" size="18" style="1"/>
+          <foreground color="-15592942"/>
+          <horizontalTextPosition value="4"/>
+          <text value="Saldo: "/>
+        </properties>
+      </component>
+      <component id="79916" class="javax.swing.JLabel" binding="balance">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="IBM Plex Sans" size="20" style="0"/>
+          <foreground color="-15592942"/>
+          <horizontalTextPosition value="2"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="e5a67" class="javax.swing.JButton" binding="backButton">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <borderPainted value="false"/>
+          <font name="IBM Plex Sans" size="16"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
+          <horizontalAlignment value="0"/>
+          <margin top="5" left="10" bottom="5" right="10"/>
+          <text value="Voltar"/>
+        </properties>
+      </component>
+      <vspacer id="3c4db">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

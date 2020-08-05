@@ -50,4 +50,9 @@ public class AccountFacade {
         return accountRepository.create(new Account(number, password));
     }
 
+    public Account getAccount(Long id) throws Exception {
+        return accountRepository.findById(id)
+                                .orElseThrow(() -> new RuntimeException("Conta não existe. ID " + id));
+    }
+
 }

@@ -1,20 +1,20 @@
 package br.unesp.banco.system.usercredentials;
 
 public class UserCredentials {
-    private String account_num;
+    private String accountNumber;
     private Long id;
 
-    public UserCredentials(String account_num, Long id) {
-        this.account_num = account_num;
+    public UserCredentials(String accountNumber, Long id) {
+        this.accountNumber = accountNumber;
         this.id = id;
     }
 
-    public String getAccount_num() {
-        return account_num;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccount_num(String account_num) {
-        this.account_num = account_num;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public Long getId() {

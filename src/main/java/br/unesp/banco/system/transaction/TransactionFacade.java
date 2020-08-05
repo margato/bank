@@ -1,12 +1,23 @@
 package br.unesp.banco.system.transaction;
 
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class TransactionFacade {
 
     private final TransactionRepository transactionRepository;
 
     public TransactionFacade(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
+    }
+
+    public List<Transaction> getAllByAccountId(Long accountId) throws SQLException {
+        Map<String, Object> params = new HashMap<>();
+        params.put("account_id", accountId);
+        return transactionRepository.findAllByAnd(params);
     }
 
 //    public Transaction login(String number, String password) throws Exception {
