@@ -3,6 +3,7 @@ package br.unesp.banco.core.util.ui;
 import br.unesp.banco.ui.interfaces.Screen;
 
 import javax.swing.*;
+import java.lang.reflect.InvocationTargetException;
 
 public class JFrameLoader {
 
@@ -16,10 +17,16 @@ public class JFrameLoader {
 
     public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, int actionOnClose, int width, int height, String windowTitle, boolean fullscreen) {
         try {
-            Screen screen = clazz.newInstance();
+            Screen screen = null;
+            try {
+                screen = clazz.getConstructor(JFrameManager.class).newInstance(frameManager);
+            } catch (NoSuchMethodException | InvocationTargetException e) {
+                e.printStackTrace();
+                System.exit(-1);
+            }
             JFrame frame = new JFrame(windowTitle);
 
-            frame.setContentPane(screen.getMainPanel());
+            frame.setContentPane(screen.getBodyPanel());
             frame.setDefaultCloseOperation(actionOnClose);
             frame.pack();
             frame.setSize(width, height);
@@ -32,7 +39,6 @@ public class JFrameLoader {
             }
 
             frameManager.setFrame(frame);
-            screen.setFrameManager(frameManager);
 
             if (fullscreen) {
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
