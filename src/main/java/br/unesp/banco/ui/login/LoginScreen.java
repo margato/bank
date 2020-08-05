@@ -44,7 +44,7 @@ public class LoginScreen extends Screen {
     }
 
     @Override
-    public JPanel getBodyPanel() {
+    public JPanel getMainPanel() {
         return mainPanel;
     }
 

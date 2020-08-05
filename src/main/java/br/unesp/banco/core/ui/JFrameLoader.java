@@ -24,7 +24,7 @@ public class JFrameLoader {
             }
             JFrame frame = new JFrame(windowTitle);
 
-            frame.setContentPane(screen.getBodyPanel());
+            frame.setContentPane(screen.getMainPanel());
             frame.setDefaultCloseOperation(actionOnClose);
             frame.pack();
             frame.setSize(width, height);

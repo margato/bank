@@ -63,7 +63,7 @@ public class OpenAccountScreen extends Screen {
     }
 
 
-    public JPanel getBodyPanel() {
+    public JPanel getMainPanel() {
         return mainPanel;
     }
 

@@ -5,6 +5,7 @@ import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.ui.login.LoginScreen;
+import br.unesp.banco.ui.statement.StatementScreen;
 
 import javax.swing.*;
 
@@ -24,9 +25,7 @@ public class MainAccountScreen extends Screen {
         contaNameLabel.setText(String.format("Conta: %s", this.getFrameManager().getUserCredentials().getAccount_num()));
 
         exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Login"));
-
-
-
+        bankStatementButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), StatementScreen.class, "Extrato"));
     }
 
     @Override
@@ -35,7 +34,7 @@ public class MainAccountScreen extends Screen {
     }
 
     @Override
-    public JPanel getBodyPanel() {
+    public JPanel getMainPanel() {
         return bodyPanel;
     }
 

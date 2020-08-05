@@ -11,7 +11,7 @@ public abstract class Screen {
 
     public abstract void addStyle();
 
-    public abstract JPanel getBodyPanel();
+    public abstract JPanel getMainPanel();
 
     public JFrameManager getFrameManager() {
         return frameManager;
