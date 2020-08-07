@@ -91,8 +91,8 @@ public class Migration {
 
         Logger.logDb("Executing migrations...");
         for (String query : queries) {
-            connection.prepareStatement(query).execute();
             Logger.logDb(query);
+            connection.prepareStatement(query).execute();
         }
         Logger.logDb("Migrations executed");
 

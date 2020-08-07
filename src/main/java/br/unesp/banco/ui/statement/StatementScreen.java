@@ -4,12 +4,12 @@ import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.JTablePrinter;
 import br.unesp.banco.core.ui.Screen;
-import br.unesp.banco.system.account.Account;
-import br.unesp.banco.system.account.AccountFacade;
-import br.unesp.banco.system.statement.StatementFacade;
-import br.unesp.banco.system.statement.StatementRow;
-import br.unesp.banco.system.transaction.TransactionFacade;
-import br.unesp.banco.system.transaction.TransactionType;
+import br.unesp.banco.app.account.Account;
+import br.unesp.banco.app.account.AccountFacade;
+import br.unesp.banco.app.statement.StatementFacade;
+import br.unesp.banco.app.statement.StatementRow;
+import br.unesp.banco.app.transaction.TransactionFacade;
+import br.unesp.banco.app.transaction.TransactionType;
 import br.unesp.banco.ui.main.MainAccountScreen;
 
 import javax.swing.*;

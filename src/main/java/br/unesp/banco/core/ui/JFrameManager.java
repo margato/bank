@@ -1,6 +1,6 @@
 package br.unesp.banco.core.ui;
 
-import br.unesp.banco.system.usercredentials.UserCredentials;
+import br.unesp.banco.app.usercredentials.UserCredentials;
 
 import javax.swing.*;
 import java.util.Map;

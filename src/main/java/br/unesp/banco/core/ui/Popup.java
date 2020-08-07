@@ -11,7 +11,7 @@ public class Popup {
         button.setBackground(Color.BLACK);
         button.setForeground(Color.WHITE);
         button.setFont(new Font("IBM Plex Sans", Font.BOLD, 20));
-        button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setMargin(null);
         button.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         button.addActionListener(actionEvent -> {

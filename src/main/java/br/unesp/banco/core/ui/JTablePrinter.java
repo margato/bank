@@ -1,6 +1,6 @@
 package br.unesp.banco.core.ui;
 
-import br.unesp.banco.system.transaction.TransactionType;
+import br.unesp.banco.app.transaction.TransactionType;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;

@@ -1,4 +1,4 @@
-package br.unesp.banco.system.account;
+package br.unesp.banco.app.account;
 
 import br.unesp.banco.core.db.operation.QueryMapper;
 import br.unesp.banco.core.db.operation.Repository;

@@ -3,7 +3,7 @@ package br.unesp.banco.ui.openaccount;
 import br.unesp.banco.core.log.Logger;
 import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.*;
-import br.unesp.banco.system.account.AccountFacade;
+import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.ui.login.LoginScreen;
 
 import javax.swing.*;

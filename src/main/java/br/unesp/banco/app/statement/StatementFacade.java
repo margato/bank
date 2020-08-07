@@ -1,6 +1,6 @@
-package br.unesp.banco.system.statement;
+package br.unesp.banco.app.statement;
 
-import br.unesp.banco.system.transaction.Transaction;
+import br.unesp.banco.app.transaction.Transaction;
 
 import java.util.List;
 import java.util.stream.Collectors;

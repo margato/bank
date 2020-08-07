@@ -1,4 +1,4 @@
-package br.unesp.banco.system.transaction;
+package br.unesp.banco.app.transaction;
 
 import br.unesp.banco.core.db.operation.QueryMapper;
 import br.unesp.banco.core.db.operation.Repository;
