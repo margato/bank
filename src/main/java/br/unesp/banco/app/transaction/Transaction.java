@@ -1,7 +1,7 @@
 package br.unesp.banco.app.transaction;
 
 import br.unesp.banco.core.db.stereotype.Entity;
-import br.unesp.banco.app.money.Money;
+import br.unesp.banco.app.primitives.money.Money;
 
 import java.time.LocalDateTime;
 

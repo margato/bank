@@ -1,4 +1,4 @@
-package br.unesp.banco.app.money;
+package br.unesp.banco.app.primitives.money;
 
 public enum Currency  {
     DOLLAR(1.0, "$"), REAL(0.19, "R$"), EURO(1.18, "€"), YEN(0.0095, "¥");

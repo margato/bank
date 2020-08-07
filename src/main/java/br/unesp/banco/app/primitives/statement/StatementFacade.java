@@ -1,4 +1,4 @@
-package br.unesp.banco.app.statement;
+package br.unesp.banco.app.primitives.statement;
 
 import br.unesp.banco.app.transaction.Transaction;
 

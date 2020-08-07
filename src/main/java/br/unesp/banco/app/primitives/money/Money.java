@@ -1,4 +1,4 @@
-package br.unesp.banco.app.money;
+package br.unesp.banco.app.primitives.money;
 
 import java.math.BigDecimal;
 

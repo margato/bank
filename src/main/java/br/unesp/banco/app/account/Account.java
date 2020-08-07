@@ -1,8 +1,8 @@
 package br.unesp.banco.app.account;
 
 import br.unesp.banco.core.db.stereotype.Entity;
-import br.unesp.banco.app.money.Currency;
-import br.unesp.banco.app.money.Money;
+import br.unesp.banco.app.primitives.money.Currency;
+import br.unesp.banco.app.primitives.money.Money;
 
 @Entity(table = "accounts")
 public class Account  {

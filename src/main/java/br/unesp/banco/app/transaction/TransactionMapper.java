@@ -1,8 +1,8 @@
 package br.unesp.banco.app.transaction;
 
 import br.unesp.banco.core.db.operation.QueryMapper;
-import br.unesp.banco.app.money.Currency;
-import br.unesp.banco.app.money.Money;
+import br.unesp.banco.app.primitives.money.Currency;
+import br.unesp.banco.app.primitives.money.Money;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -5,7 +5,7 @@ import br.unesp.banco.core.db.init.migration.DatabaseInitializer;
 import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.app.account.AccountMapper;
 import br.unesp.banco.app.account.AccountRepository;
-import br.unesp.banco.app.statement.StatementFacade;
+import br.unesp.banco.app.primitives.statement.StatementFacade;
 import br.unesp.banco.app.transaction.TransactionFacade;
 import br.unesp.banco.app.transaction.TransactionMapper;
 import br.unesp.banco.app.transaction.TransactionRepository;

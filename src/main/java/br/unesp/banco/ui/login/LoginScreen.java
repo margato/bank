@@ -6,7 +6,7 @@ import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.app.account.Account;
 import br.unesp.banco.app.account.AccountFacade;
-import br.unesp.banco.app.usercredentials.UserCredentials;
+import br.unesp.banco.app.primitives.usercredentials.UserCredentials;
 import br.unesp.banco.ui.main.MainAccountScreen;
 import br.unesp.banco.ui.openaccount.OpenAccountScreen;
 

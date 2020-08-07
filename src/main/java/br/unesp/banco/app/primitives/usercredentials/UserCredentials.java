@@ -1,4 +1,4 @@
-package br.unesp.banco.app.usercredentials;
+package br.unesp.banco.app.primitives.usercredentials;
 
 public class UserCredentials {
     private String accountNumber;
