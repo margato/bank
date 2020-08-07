@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class Repository<K, T> implements Crud<K, T> {
+public abstract class Repository<K, T> implements Crud<K, T> {
 
     private final Connection connection;
     private final String tableName;
