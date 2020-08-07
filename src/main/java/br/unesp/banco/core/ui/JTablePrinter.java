@@ -23,7 +23,6 @@ public class JTablePrinter {
     private static File getDestination() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.showSaveDialog(null);
 
         return fileChooser.getSelectedFile();
     }
@@ -91,6 +90,7 @@ public class JTablePrinter {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException ignored) {
         }
     }
 
