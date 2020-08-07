@@ -1,4 +1,4 @@
-package br.unesp.banco.ui.statement;
+package br.unesp.banco.screens.statement;
 
 import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
@@ -10,7 +10,7 @@ import br.unesp.banco.app.primitives.statement.StatementFacade;
 import br.unesp.banco.app.primitives.statement.StatementRow;
 import br.unesp.banco.app.transaction.TransactionFacade;
 import br.unesp.banco.app.transaction.TransactionType;
-import br.unesp.banco.ui.main.MainAccountScreen;
+import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

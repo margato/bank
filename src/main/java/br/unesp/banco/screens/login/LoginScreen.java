@@ -1,4 +1,4 @@
-package br.unesp.banco.ui.login;
+package br.unesp.banco.screens.login;
 
 import br.unesp.banco.core.log.Logger;
 import br.unesp.banco.core.ui.JFrameLoader;
@@ -7,8 +7,8 @@ import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.app.account.Account;
 import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.app.primitives.usercredentials.UserCredentials;
-import br.unesp.banco.ui.main.MainAccountScreen;
-import br.unesp.banco.ui.openaccount.OpenAccountScreen;
+import br.unesp.banco.screens.main.MainAccountScreen;
+import br.unesp.banco.screens.openaccount.OpenAccountScreen;
 
 import javax.swing.*;
 

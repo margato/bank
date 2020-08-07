@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="br.unesp.banco.ui.statement.StatementScreen">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="br.unesp.banco.screens.statement.StatementScreen">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="19" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="607" height="400"/>
+      <xy x="20" y="20" width="612" height="400"/>
     </constraints>
     <properties>
       <background color="-1"/>
@@ -53,6 +53,7 @@
         <properties>
           <background color="-16777216"/>
           <borderPainted value="false"/>
+          <focusPainted value="false"/>
           <font name="IBM Plex Sans" size="16"/>
           <foreground color="-1"/>
           <hideActionText value="false"/>
@@ -95,6 +96,7 @@
         <properties>
           <background color="-14452481"/>
           <borderPainted value="false"/>
+          <focusPainted value="false"/>
           <font name="IBM Plex Sans" size="16"/>
           <foreground color="-1"/>
           <hideActionText value="false"/>

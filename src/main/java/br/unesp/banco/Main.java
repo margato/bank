@@ -9,7 +9,7 @@ import br.unesp.banco.app.primitives.statement.StatementFacade;
 import br.unesp.banco.app.transaction.TransactionFacade;
 import br.unesp.banco.app.transaction.TransactionMapper;
 import br.unesp.banco.app.transaction.TransactionRepository;
-import br.unesp.banco.ui.BankApplication;
+import br.unesp.banco.screens.BankApplication;
 
 import java.sql.SQLException;
 import java.util.HashMap;

@@ -1,10 +1,10 @@
-package br.unesp.banco.ui.openaccount;
+package br.unesp.banco.screens.openaccount;
 
 import br.unesp.banco.core.log.Logger;
 import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.*;
 import br.unesp.banco.app.account.AccountFacade;
-import br.unesp.banco.ui.login.LoginScreen;
+import br.unesp.banco.screens.login.LoginScreen;
 
 import javax.swing.*;
 import java.util.Random;

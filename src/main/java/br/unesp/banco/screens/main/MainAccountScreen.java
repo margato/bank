@@ -1,11 +1,11 @@
-package br.unesp.banco.ui.main;
+package br.unesp.banco.screens.main;
 
 
 import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.Screen;
-import br.unesp.banco.ui.login.LoginScreen;
-import br.unesp.banco.ui.statement.StatementScreen;
+import br.unesp.banco.screens.login.LoginScreen;
+import br.unesp.banco.screens.statement.StatementScreen;
 
 import javax.swing.*;
 
