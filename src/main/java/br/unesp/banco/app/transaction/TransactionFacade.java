@@ -23,16 +23,26 @@ public class TransactionFacade {
         return transactionRepository.findAllInTheLastNDays(10, accountId);
     }
 
-    public Transaction op(Long accountId, TransactionType type, Money value) throws SQLException {
+    public Transaction create(Long accountId, TransactionType type, Money value) throws SQLException {
         String tst;
+        Money val = new Money(value.getAmount());
         tst = type.getSignal();
         if (tst.equals("-"))
-            value.setNegative();
-        return transactionRepository.create(new Transaction(value, type, LocalDateTime.now(), accountId));
+            val.setNegative();
+        return transactionRepository.create(new Transaction(val, type, LocalDateTime.now(), accountId));
 
     }
-    public Transaction sacar(Long accountId, Money value) throws SQLException {
-        return  op(accountId, TransactionType.WITHDRAW, value);
+    public Transaction withdraw(Long accountId, Money value) throws SQLException {
+        return  create(accountId, TransactionType.WITHDRAW, value);
+    }
+
+    public Transaction makeDeposit(Long accountId, Money value) throws SQLException {
+        return create(accountId, TransactionType.DEPOSIT, value);
+    }
+
+    public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws SQLException {
+        final Transaction op = create(accountIdRem, TransactionType.TRANSFER_MADE, value);
+        return create(accountIdDest, TransactionType.TRANSFER_RECEIVED,value);
     }
 
     public Money getBalance(Long accountId) throws SQLException {
@@ -41,40 +51,6 @@ public class TransactionFacade {
 
     }
 
-//    public Transaction login(String number, String password) throws Exception {
-//        if (number.isEmpty() || password.isEmpty())
-//            throw new Exception("Número da conta ou senha inválida");
-//
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("number", number);
-//        params.put("password", password);
-//
-//        Optional<Transaction> account = transactionRepository.findByAnd(params);
-//
-//        if (!account.isPresent())
-//            throw new Exception("Credenciais inválidas");
-//
-//        Logger.log("Login", "Logado!");
-//        return account.get();
-//    }
-//
-//    public Transaction createAccount(String number, String password) throws Exception {
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("number", number);
-//
-//        Boolean accountAlreadyExists = transactionRepository.findByAnd(params).isPresent();
-//        if (accountAlreadyExists) {
-//            throw new Exception("Número de conta já existe");
-//        }
-//
-//        if (number.isEmpty() || number.length() > 8) {
-//            throw new Exception("Número inválido");
-//        }
-//        if (password.isEmpty()) {
-//            throw new Exception("Senha inválida");
-//        }
-//
-//        return transactionRepository.create(new Transaction(number, password));
-//    }
+
 
 }
