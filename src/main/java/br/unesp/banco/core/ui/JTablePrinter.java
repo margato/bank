@@ -78,7 +78,7 @@ public class JTablePrinter {
                 Object value = jtable.getValueAt(i, valueColumn);
 
                 table.addCell(getNewRow().add(date.toString()));
-                table.addCell(getNewRow().add(type.toString()));
+                table.addCell(getNewRow().add(type.getName()));
                 table.addCell(getNewRow().add(type.getSignal() + value.toString()));
             }
 

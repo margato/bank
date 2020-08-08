@@ -6,6 +6,11 @@ public class Money implements Exchangeable {
     private Currency currency = Currency.REAL;
     private BigDecimal amount;
 
+    public void setNegative() {
+
+        this.amount = this.amount.multiply(new BigDecimal(-1));
+    }
+
     public void add(Integer amount) {
         this.amount = new BigDecimal(amount).add(this.amount);
     }
@@ -54,6 +59,7 @@ public class Money implements Exchangeable {
         this.currency = currency;
     }
 
+
     public Money(Double amount) {
         this.amount = BigDecimal.valueOf(amount);
     }
@@ -77,4 +83,6 @@ public class Money implements Exchangeable {
         converted.add(amount.multiply(BigDecimal.valueOf(factor)));
         return converted;
     }
+
+
 }

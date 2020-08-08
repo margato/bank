@@ -1,5 +1,7 @@
 package br.unesp.banco;
 
+import br.unesp.banco.app.primitives.money.Money;
+import br.unesp.banco.app.transaction.TransactionType;
 import br.unesp.banco.core.db.init.MySQL;
 import br.unesp.banco.core.db.init.migration.DatabaseInitializer;
 import br.unesp.banco.app.account.AccountFacade;
@@ -34,6 +36,8 @@ public class Main {
             put("transaction", transactionFacade);
             put("statement", statementFacade);
         }};
+        System.out.printf("Saldo da conta %.3f\n",transactionFacade.getBalance(3L).getAmount());
+
 
         BankApplication bankApplication = new BankApplication(facades);
         bankApplication.run();

@@ -7,15 +7,14 @@ import java.time.LocalDateTime;
 
 @Entity(table = "transactions")
 public class Transaction {
-
     private Long id;
     private Money value;
     private TransactionType type;
     private LocalDateTime date;
-    private Integer accountId;
+    private Long accountId;
 
-    public Transaction(Long id, Money value, TransactionType type, LocalDateTime date, Integer accountId) {
-        this.id = id;
+    public Transaction( Money value, TransactionType type, LocalDateTime date, Long accountId) {
+
         this.value = value;
         this.type = type;
         this.date = date;
@@ -56,11 +55,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public Integer getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Integer accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 }

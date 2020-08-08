@@ -1,7 +1,10 @@
 package br.unesp.banco.app.transaction;
 
 
+import br.unesp.banco.app.primitives.money.Money;
+
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class TransactionFacade {
@@ -18,6 +21,24 @@ public class TransactionFacade {
 
     public List<Transaction> getInTheLastTenDays(Long accountId) throws SQLException {
         return transactionRepository.findAllInTheLastNDays(10, accountId);
+    }
+
+    public Transaction op(Long accountId, TransactionType type, Money value) throws SQLException {
+        String tst;
+        tst = type.getSignal();
+        if (tst.equals("-"))
+            value.setNegative();
+        return transactionRepository.create(new Transaction(value, type, LocalDateTime.now(), accountId));
+
+    }
+    public Transaction sacar(Long accountId, Money value) throws SQLException {
+        return  op(accountId, TransactionType.WITHDRAW, value);
+    }
+
+    public Money getBalance(Long accountId) throws SQLException {
+        return  transactionRepository.getAccountBalance(accountId);
+
+
     }
 
 //    public Transaction login(String number, String password) throws Exception {
