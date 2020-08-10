@@ -26,8 +26,7 @@ public class TransactionFacade {
     public Transaction create(Long accountId, TransactionType type, Money value) throws SQLException {
         String tst;
         Money val = new Money(value.getAmount());
-        tst = type.getSignal();
-        if (tst.equals("-"))
+        if (type.getSignal().equals("-"))
             val.setNegative();
         return transactionRepository.create(new Transaction(val, type, LocalDateTime.now(), accountId));
 
