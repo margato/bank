@@ -35,25 +35,6 @@ public class Main {
             put("transaction", transactionFacade);
             put("statement", statementFacade);
         }};
-//        System.out.printf("Saldo da conta %d antes de depositar %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-//        transactionFacade.makeDeposit(3L,new Money(500));
-//        System.out.printf("Saldo da conta %d depois de depositar %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-//
-//        System.out.printf("Saldo da conta %d antes de sacar %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-//        transactionFacade.withdraw(3L, new Money(400));
-//        System.out.printf("Saldo da conta %d depois de sacar %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-//
-//        System.out.printf("Saldo da conta %d antes de transferir %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-//
-//        System.out.printf("Saldo da conta %d antes de transferir %.3f\n",1L,transactionFacade.getBalance(1L).getAmount());
-//        transactionFacade.transfer(3L,1L,new Money(200));
-//        System.out.printf("Saldo da conta %d depois de transferir %.3f\n",1L,transactionFacade.getBalance(1L).getAmount());
-//        System.out.printf("Saldo da conta %d depois de transferir %.3f\n",3L,transactionFacade.getBalance(3L).getAmount());
-
-
-
-
-
         BankApplication bankApplication = new BankApplication(facades);
         bankApplication.run();
     }

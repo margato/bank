@@ -40,7 +40,7 @@ public class TransactionFacade {
     }
 
     public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws SQLException {
-        final Transaction op = create(accountIdRem, TransactionType.TRANSFER_MADE, value);
+        create(accountIdRem, TransactionType.TRANSFER_MADE, value);
         return create(accountIdDest, TransactionType.TRANSFER_RECEIVED,value);
     }
 
