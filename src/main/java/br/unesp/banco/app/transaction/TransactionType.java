@@ -24,10 +24,7 @@ public enum TransactionType {
         return name;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     public static TransactionType getByName(String name) {
         return Arrays.stream(TransactionType.values())

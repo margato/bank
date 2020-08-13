@@ -23,11 +23,11 @@ public class AccountMapper implements QueryMapper<Account> {
 
     @Override
     public String toQuery(Account account) {
-        return String.format("INSERT INTO %s (number, password, balance) VALUES ('%s', '%s', '%f')",
+        return String.format("INSERT INTO %s (number, password, balance) VALUES ('%s', '%s', %s)",
                 Account.class.getAnnotation(Entity.class).table(),
                 account.getNumber(),
                 account.getPassword(),
-                account.getBalance().getAmount()
+                account.getBalance().getAmount().toString()
         );
     }
 }

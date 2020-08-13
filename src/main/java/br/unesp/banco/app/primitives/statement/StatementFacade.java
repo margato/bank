@@ -28,7 +28,7 @@ public class StatementFacade {
         for (int i = 0; i < statementRows.size(); i++) {
             pureStatement[i] = new Object[]{
                     statementRows.get(i).getDate(),
-                    statementRows.get(i).getType(),
+                    statementRows.get(i).getType().getName(),
                     statementRows.get(i).getValue(),
             };
         }
