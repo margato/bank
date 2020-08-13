@@ -24,15 +24,14 @@ public class TransactionFacade {
     }
 
     public Transaction create(Long accountId, TransactionType type, Money value) throws SQLException {
-        String tst;
         Money val = new Money(value.getAmount());
         if (type.getSignal().equals("-"))
             val.setNegative();
         return transactionRepository.create(new Transaction(val, type, LocalDateTime.now(), accountId));
-
     }
+
     public Transaction withdraw(Long accountId, Money value) throws SQLException {
-        return  create(accountId, TransactionType.WITHDRAW, value);
+        return create(accountId, TransactionType.WITHDRAW, value);
     }
 
     public Transaction makeDeposit(Long accountId, Money value) throws SQLException {
@@ -41,15 +40,11 @@ public class TransactionFacade {
 
     public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws SQLException {
         create(accountIdRem, TransactionType.TRANSFER_MADE, value);
-        return create(accountIdDest, TransactionType.TRANSFER_RECEIVED,value);
+        return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
     }
 
     public Money getBalance(Long accountId) throws SQLException {
-        return  transactionRepository.getAccountBalance(accountId);
-
-
+        return transactionRepository.getAccountBalance(accountId);
     }
-
-
 
 }
