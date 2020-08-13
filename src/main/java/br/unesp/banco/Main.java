@@ -1,5 +1,6 @@
 package br.unesp.banco;
 
+import br.unesp.banco.app.primitives.money.Money;
 import br.unesp.banco.core.db.init.MySQL;
 import br.unesp.banco.core.db.init.migration.DatabaseInitializer;
 import br.unesp.banco.app.account.AccountFacade;
@@ -34,7 +35,6 @@ public class Main {
             put("transaction", transactionFacade);
             put("statement", statementFacade);
         }};
-
         BankApplication bankApplication = new BankApplication(facades);
         bankApplication.run();
     }
