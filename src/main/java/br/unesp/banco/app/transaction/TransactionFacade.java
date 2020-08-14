@@ -3,6 +3,7 @@ package br.unesp.banco.app.transaction;
 
 import br.unesp.banco.app.primitives.money.Money;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,7 +31,13 @@ public class TransactionFacade {
         return transactionRepository.create(new Transaction(val, type, LocalDateTime.now(), accountId));
     }
 
-    public Transaction withdraw(Long accountId, Money value) throws SQLException {
+    public Transaction withdraw(Long accountId, Money value) throws Exception {
+        if (value.getAmount().compareTo(getBalance(accountId).getAmount()) > 0){
+            throw new Exception("Valor excede o saldo em conta");
+        }
+        else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
+            throw new Exception("Valores negativos não serão aceitos");
+
         return create(accountId, TransactionType.WITHDRAW, value);
     }
 
@@ -38,7 +45,12 @@ public class TransactionFacade {
         return create(accountId, TransactionType.DEPOSIT, value);
     }
 
-    public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws SQLException {
+    public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws Exception {
+        if (value.getAmount().compareTo(getBalance(accountIdRem).getAmount()) > 0){
+            throw new Exception("Valor excede o saldo em conta");
+        }
+        else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
+            throw new Exception("Valores negativos não serão aceitos");
         create(accountIdRem, TransactionType.TRANSFER_MADE, value);
         return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
     }
