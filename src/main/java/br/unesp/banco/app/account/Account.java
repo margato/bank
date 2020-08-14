@@ -9,7 +9,7 @@ public class Account  {
     private Long id;
     private String number;
     private String password;
-    private Money balance;
+
 
     public Long getId() {
         return id;
@@ -18,7 +18,6 @@ public class Account  {
     public Account(String number, String password) {
         this.number = number;
         this.password = password;
-        balance = new Money(0, Currency.REAL);
     }
 
     public Account() {
@@ -48,16 +47,8 @@ public class Account  {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", number='" + number + '\'' +
-                ", balance=" + balance +
-                '}';
+                ", number='" + number + "}";
     }
 
-    public Money getBalance() {
-        return balance;
-    }
 
-    public void setBalance(Money balance) {
-        this.balance = balance;
-    }
 }
