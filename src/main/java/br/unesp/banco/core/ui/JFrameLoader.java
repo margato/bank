@@ -9,8 +9,8 @@ public class JFrameLoader {
         load(frameManager, clazz, JFrame.EXIT_ON_CLOSE, 700, 700, windowTitle, false);
     }
 
-    public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, String windowTitle, boolean fullscreen) {
-        load(frameManager, clazz, JFrame.EXIT_ON_CLOSE, 700, 700, windowTitle, fullscreen);
+    public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, int width, int height, String windowTitle) {
+        load(frameManager, clazz, JFrame.EXIT_ON_CLOSE, width, height, windowTitle, false);
     }
 
     public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, int actionOnClose, int width, int height, String windowTitle, boolean fullscreen) {

@@ -11,6 +11,7 @@ import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.JTablePrinter;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.screens.main.MainAccountScreen;
+import br.unesp.banco.screens.openaccount.OpenAccountScreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -49,8 +50,7 @@ public class StatementScreen extends Screen {
 
         String balanceValue = transactionFacade.getBalance(account.getId()).toString();
         balance.setText(balanceValue);
-        backButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), MainAccountScreen.class, "Banco"));
-
+        backButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), MainAccountScreen.class, 500, 400, "Banco"));
         String header = String.format("Saldo: %s", balanceValue);
         List<StatementRow> statementRows10Days = statementFacade.generateStatement(transactionFacade.getInTheLastTenDays(account.getId()));
         JTable printableTable = new JTable(statementFacade.convertToPureObject(statementRows10Days), columnNames);
