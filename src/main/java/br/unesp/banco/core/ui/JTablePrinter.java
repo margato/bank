@@ -24,6 +24,8 @@ public class JTablePrinter {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
+        fileChooser.showSaveDialog(null);
+
         return fileChooser.getSelectedFile();
     }
 

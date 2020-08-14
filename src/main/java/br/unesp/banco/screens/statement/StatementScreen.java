@@ -1,16 +1,15 @@
 package br.unesp.banco.screens.statement;
 
-import br.unesp.banco.app.transaction.TransactionRepository;
-import br.unesp.banco.core.ui.JFrameLoader;
-import br.unesp.banco.core.ui.JFrameManager;
-import br.unesp.banco.core.ui.JTablePrinter;
-import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.app.account.Account;
 import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.app.primitives.statement.StatementFacade;
 import br.unesp.banco.app.primitives.statement.StatementRow;
 import br.unesp.banco.app.transaction.TransactionFacade;
 import br.unesp.banco.app.transaction.TransactionType;
+import br.unesp.banco.core.ui.JFrameLoader;
+import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.JTablePrinter;
+import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
@@ -48,10 +47,11 @@ public class StatementScreen extends Screen {
         model = new DefaultTableModel(data, columnNames);
         statementTable.setModel(model);
 
-//        balance.setText(account.getBalance().toString());
+        String balanceValue = transactionFacade.getBalance(account.getId()).toString();
+        balance.setText(balanceValue);
         backButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), MainAccountScreen.class, "Banco"));
 
-        String header = String.format("Saldo: %s", transactionFacade.getBalance(account.getId()));
+        String header = String.format("Saldo: %s", balanceValue);
         List<StatementRow> statementRows10Days = statementFacade.generateStatement(transactionFacade.getInTheLastTenDays(account.getId()));
         JTable printableTable = new JTable(statementFacade.convertToPureObject(statementRows10Days), columnNames);
         print.addActionListener(e -> JTablePrinter.print(header, printableTable));

@@ -36,7 +36,8 @@ public class Money implements Exchangeable {
     }
 
     public String toString() {
-        return currency.getName() + " " + getAmount().setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        String money = currency.getName() + " " + getAmount().setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        return money.replace("-", "");
     }
 
     public Money(Double amount, Currency currency) {
@@ -58,7 +59,6 @@ public class Money implements Exchangeable {
         this.amount = amount;
         this.currency = currency;
     }
-
 
     public Money(Double amount) {
         this.amount = BigDecimal.valueOf(amount);

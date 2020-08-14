@@ -14,7 +14,6 @@ public class Transaction {
     private Long accountId;
 
     public Transaction( Money value, TransactionType type, LocalDateTime date, Long accountId) {
-
         this.value = value;
         this.type = type;
         this.date = date;
