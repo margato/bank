@@ -50,7 +50,6 @@ public class LoginScreen extends Screen {
 
     @Override
     public void addStyle() {
-        Logger.logUi("Carregando estilos", LoginScreen.class);
         // Padding
         accountInput.setSize(accountInput.getWidth(), 100);
         accountInput.setBorder(BorderFactory.createCompoundBorder(

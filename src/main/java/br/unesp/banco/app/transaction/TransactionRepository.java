@@ -38,16 +38,16 @@ public class TransactionRepository extends Repository<Long, Transaction> {
     }
 
     public Money getAccountBalance( Long accountId) throws SQLException{
-        String query = String.format("select accounts.id as 'conta_id',\n" +
+        String query = String.format(
+                "select accounts.id as 'conta_id',\n" +
                 "       sum(case when transactions.account_id = accounts.id and (transactions.type = 'DEPOSIT' or  transactions.type = 'TRANSFER_RECEIVED')\n" +
                 "          then transactions.value\n" +
                 "          else 0 end) as 'credito',\n" +
                 "       sum(case when transactions.account_id = accounts.id and (transactions.type = 'WITHDRAW' or  transactions.type = 'TRANSFER_MADE')\n" +
                 "          then transactions.value\n" +
                 "          else 0 end) as 'debito'\n" +
-                "from accounts\n" +
-                "\n" +
-                "inner join transactions  on transactions.account_id = accounts.id  where accounts.id = %s",accountId);
+                "   from accounts\n" +
+                "   inner join transactions  on transactions.account_id = accounts.id  where accounts.id = %s",accountId);
         ResultSet rs = this.getResult(query);
         rs.next();
         return  moneyMapper.toEntity(rs);

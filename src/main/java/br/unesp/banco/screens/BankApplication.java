@@ -27,7 +27,6 @@ public class BankApplication {
     }
 
     public void run() {
-        Logger.logUi("Iniciando", LoginScreen.class);
         JFrameLoader.load(frameManager, LoginScreen.class, "Acessar conta");
     }
 

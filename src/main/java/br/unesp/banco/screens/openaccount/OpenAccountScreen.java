@@ -54,8 +54,6 @@ public class OpenAccountScreen extends Screen {
     }
 
     public void addStyle() {
-        Logger.logUi("Carregando estilos", OpenAccountScreen.class);
-
         passwordInput.setSize(passwordInput.getWidth(), 100);
         passwordInput.setBorder(BorderFactory.createCompoundBorder(
                 passwordInput.getBorder(),
