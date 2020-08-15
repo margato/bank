@@ -32,8 +32,13 @@ public class WithdrawScreen extends Screen {
     public WithdrawScreen(JFrameManager frameManager) {
         super(frameManager);
         confirmButton.addActionListener(e -> {
+            Double val;
             try {
-                Double val = valueInput.getText().isEmpty() ? -1.0 :  Double.valueOf(valueInput.getText().replace(',','.'));
+                if (valueInput.getText().isEmpty() || valueInput.getText().matches(".*[a-zA-Z]+.*"))
+                    val = -1.0;
+                else
+                     val =  Double.valueOf(valueInput.getText().replace(',','.'));
+
                 AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
                 TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
