@@ -42,12 +42,9 @@ public class WithdrawScreen extends Screen {
                 transactionFacade.withdraw(account.getId(), new Money(val));
                 Popup.show("Saque","Saque aprovado!","Ok",null);
                 JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
-
-
             }
             catch (Exception ex){
                 errorMessage.setText(ex.getMessage());
-
             }
         });
         backButton.addActionListener(e -> {

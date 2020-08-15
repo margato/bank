@@ -23,7 +23,6 @@ import javax.swing.*;
         private JButton backButton;
         private JLabel errorMessage;
         private JButton confirmButton;
-        private JLabel depositLabel;
 
         public final static int WIDTH = 700;
         public final static int HEIGHT = 450;
