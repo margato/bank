@@ -33,8 +33,8 @@ public class MainAccountScreen extends Screen {
         exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Login"));
         bankStatementButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), StatementScreen.class, "Extrato"));
 
-        withdrawButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), WithdrawScreen.class, 700, 500,  "Saque"));
-        depositButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), DepositScreen.class, 700, 500,  "Deposito"));
+        withdrawButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), WithdrawScreen.class, WithdrawScreen.WIDTH, WithdrawScreen.HEIGHT,  "Saque"));
+        depositButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), DepositScreen.class, DepositScreen.WIDTH, DepositScreen.HEIGHT,  "Depósito"));
     }
 
     @Override

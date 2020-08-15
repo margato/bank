@@ -25,6 +25,9 @@ import javax.swing.*;
         private JButton confirmButton;
         private JLabel depositLabel;
 
+        public final static int WIDTH = 700;
+        public final static int HEIGHT = 450;
+
         public DepositScreen(JFrameManager frameManager) {
             super(frameManager);
             confirmButton.addActionListener(e -> {
@@ -36,23 +39,23 @@ import javax.swing.*;
                     Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
 
                     transactionFacade.makeDeposit(account.getId(), new Money(val));
-                    Popup.show("Depósito","Depósito Aprovado!","Ok",null);
+                    Popup.show("Depósito","Depósito aprovado!","Ok",null);
                     JFrameLoader.load(getFrameManager(), MainAccountScreen.class,700, 500, "Banco");
 
                 }
                 catch (Exception ex){
                     errorMessage.setText(ex.getMessage());
-
                 }
             });
-            backButton.addActionListener(e -> {
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, 700, 500, "Banco");
-
-            });
+            backButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), MainAccountScreen.class, 700, 500, "Banco"));
         }
 
         @Override
         public void addStyle() {
+            valueInput.setSize(valueInput.getWidth(), 100);
+            valueInput.setBorder(BorderFactory.createCompoundBorder(
+                    valueInput.getBorder(),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         }
 
         @Override

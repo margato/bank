@@ -26,6 +26,9 @@ public class WithdrawScreen extends Screen {
     private JButton confirmButton;
     private JLabel depositLabel;
 
+    public final static int WIDTH = 700;
+    public final static int HEIGHT = 450;
+
     public WithdrawScreen(JFrameManager frameManager) {
         super(frameManager);
         confirmButton.addActionListener(e -> {
@@ -37,8 +40,8 @@ public class WithdrawScreen extends Screen {
                 Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
 
                 transactionFacade.withdraw(account.getId(), new Money(val));
-                Popup.show("Saque","Saque Aprovado!","Ok",null);
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class,700, 500, "Banco");
+                Popup.show("Saque","Saque aprovado!","Ok",null);
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
 
 
             }
@@ -55,6 +58,11 @@ public class WithdrawScreen extends Screen {
 
     @Override
     public void addStyle() {
+        valueInput.setSize(valueInput.getWidth(), 100);
+        valueInput.setBorder(BorderFactory.createCompoundBorder(
+                valueInput.getBorder(),
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
     }
 
     @Override
