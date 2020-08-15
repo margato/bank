@@ -1,8 +1,11 @@
 package br.unesp.banco.screens.transfer;
 
+import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.Screen;
+
 import javax.swing.*;
 
-public class TransferScreen {
+public class TransferScreen  extends Screen {
     private JPanel bodyPanel;
     private JPanel painelBts;
     private JButton backButton;
@@ -11,4 +14,18 @@ public class TransferScreen {
     private JTextField valueInput;
     private JLabel errorMessage;
     private JLabel accountLabel;
+
+    public TransferScreen(JFrameManager frameManager) {
+        super(frameManager);
+    }
+
+    @Override
+    public void addStyle() {
+
+    }
+
+    @Override
+    public JPanel getMainPanel() {
+        return bodyPanel;
+    }
 }
