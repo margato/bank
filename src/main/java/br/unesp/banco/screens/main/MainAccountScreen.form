@@ -32,7 +32,7 @@
               <foreground color="-1"/>
             </properties>
             <border type="empty">
-              <size top="20" left="20" bottom="20" right="20"/>
+              <size top="0" left="20" bottom="20" right="20"/>
             </border>
             <children>
               <component id="91a6a" class="javax.swing.JButton" binding="exitButton">
@@ -94,7 +94,7 @@
               <foreground color="-1"/>
             </properties>
             <border type="empty">
-              <size top="20" left="20" bottom="20" right="20"/>
+              <size top="0" left="20" bottom="20" right="20"/>
             </border>
             <children>
               <component id="46e0a" class="javax.swing.JButton" binding="bankStatementButton">
@@ -149,7 +149,7 @@
               <foreground color="-1"/>
             </properties>
             <border type="empty">
-              <size top="20" left="20" bottom="20" right="20"/>
+              <size top="0" left="20" bottom="20" right="20"/>
             </border>
             <children>
               <component id="92dac" class="javax.swing.JButton" binding="transferButton">

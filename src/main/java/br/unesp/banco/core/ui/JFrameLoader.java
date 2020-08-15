@@ -3,6 +3,7 @@ package br.unesp.banco.core.ui;
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 
+
 public class JFrameLoader {
 
     public static void load(JFrameManager frameManager, Class<? extends Screen> clazz, String windowTitle) {
@@ -31,14 +32,14 @@ public class JFrameLoader {
             frame.setDefaultCloseOperation(actionOnClose);
             frame.pack();
             frame.setSize(width, height);
-            frame.setVisible(true);
+            frame.setResizable(false);
             screen.addStyle();
             JFrameUtils.center(frame);
 
             if (frameManager.getFrame() != null) {
                 frameManager.getFrame().setVisible(false);
             }
-
+            frame.setVisible(true);
             frameManager.setFrame(frame);
 
             if (fullscreen) {

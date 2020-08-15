@@ -7,7 +7,6 @@ public class Money implements Exchangeable {
     private BigDecimal amount;
 
     public void setNegative() {
-
         this.amount = this.amount.multiply(new BigDecimal(-1));
     }
 
@@ -37,7 +36,7 @@ public class Money implements Exchangeable {
 
     public String toString() {
         String money = currency.getName() + " " + getAmount().setScale(2, BigDecimal.ROUND_HALF_EVEN);
-        return money.replace("-", "");
+        return money.replace("-", "").replace(".", ",");
     }
 
     public Money(Double amount, Currency currency) {
