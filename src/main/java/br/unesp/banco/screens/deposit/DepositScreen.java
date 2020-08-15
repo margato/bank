@@ -31,7 +31,7 @@ import javax.swing.*;
             super(frameManager);
             confirmButton.addActionListener(e -> {
                 try {
-                    Double val = Double.valueOf(valueInput.getText().replace(',','.'));
+                    Double val = valueInput.getText().isEmpty() ? -1.0 :  Double.parseDouble(valueInput.getText().replace(',','.'));
                     AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
                     TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
