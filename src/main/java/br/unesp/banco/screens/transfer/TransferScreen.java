@@ -14,6 +14,7 @@ public class TransferScreen  extends Screen {
     private JTextField valueInput;
     private JLabel errorMessage;
     private JLabel accountLabel;
+    private JTextField accountInput;
 
     public TransferScreen(JFrameManager frameManager) {
         super(frameManager);
