@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="br.unesp.banco.screens.transfer.TransferScreen">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="431"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="6c95b" binding="bodyPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="96df3" binding="painelBts" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <enabled value="true"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
+            <children>
+              <component id="19e65" class="javax.swing.JButton" binding="backButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.5" weighty="1.0" ipadx="220"/>
+                </constraints>
+                <properties>
+                  <actionCommand value="Saque"/>
+                  <autoscrolls value="false"/>
+                  <background color="-16777216"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="IBM Plex Sans" size="20" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <margin top="20" left="20" bottom="20" right="20"/>
+                  <rolloverIcon value="com/sun/deploy/resources/image/aboutjava.png"/>
+                  <text value="Voltar"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="274df" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-1"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
+            <children>
+              <component id="a1e79" class="javax.swing.JLabel" binding="valueLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <enabled value="true"/>
+                  <focusable value="true"/>
+                  <font name="IBM Plex Sans" size="18"/>
+                  <foreground color="-16777216"/>
+                  <horizontalTextPosition value="0"/>
+                  <labelFor value="67f12"/>
+                  <text value="Valor"/>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <grid id="f8c14" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="634f2" class="javax.swing.JButton" binding="confirmButton">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <actionCommand value="Saque"/>
+                      <autoscrolls value="false"/>
+                      <background color="-14452481"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="IBM Plex Sans" size="20" style="1"/>
+                      <foreground color="-1"/>
+                      <horizontalAlignment value="0"/>
+                      <margin top="20" left="20" bottom="20" right="20"/>
+                      <rolloverIcon value="com/sun/deploy/resources/image/aboutjava.png"/>
+                      <text value="Confirmar"/>
+                    </properties>
+                  </component>
+                  <vspacer id="fb552">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="c4709" class="javax.swing.JTextField" binding="valueInput">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <caretColor color="-16777216"/>
+                      <editable value="true"/>
+                      <font name="IBM Plex Sans" size="18"/>
+                      <foreground color="-16777216"/>
+                      <margin top="2" left="6" bottom="2" right="6"/>
+                      <opaque value="true"/>
+                      <selectedTextColor color="-15592942"/>
+                      <selectionStart value="0"/>
+                      <text value=""/>
+                    </properties>
+                    <clientProperties>
+                      <caretWidth class="java.lang.Integer" value="2"/>
+                    </clientProperties>
+                  </component>
+                </children>
+              </grid>
+              <component id="a4c7f" class="javax.swing.JLabel" binding="errorMessage">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <font name="IBM Plex Sans" size="18"/>
+                  <foreground color="-2555883"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="bf352" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-1"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
+            <children>
+              <component id="42b11" class="javax.swing.JLabel" binding="accountLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <enabled value="true"/>
+                  <focusable value="true"/>
+                  <font name="IBM Plex Sans" size="18"/>
+                  <foreground color="-16777216"/>
+                  <horizontalTextPosition value="0"/>
+                  <labelFor value="67f12"/>
+                  <text value="nº da conta"/>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <grid id="a585a" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <vspacer id="e33c6">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="31dd5" class="javax.swing.JTextField">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <caretColor color="-16777216"/>
+                      <editable value="true"/>
+                      <font name="IBM Plex Sans" size="18"/>
+                      <foreground color="-16777216"/>
+                      <margin top="2" left="6" bottom="2" right="6"/>
+                      <opaque value="true"/>
+                      <selectedTextColor color="-15592942"/>
+                      <selectionStart value="0"/>
+                      <text value=""/>
+                    </properties>
+                    <clientProperties>
+                      <caretWidth class="java.lang.Integer" value="2"/>
+                    </clientProperties>
+                  </component>
+                </children>
+              </grid>
+              <component id="2bf4c" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <font name="IBM Plex Sans" size="18"/>
+                  <foreground color="-2555883"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
