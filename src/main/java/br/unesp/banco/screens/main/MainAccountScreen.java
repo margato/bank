@@ -9,6 +9,7 @@ import br.unesp.banco.screens.statement.StatementScreen;
 
 import javax.swing.*;
 
+
 public class MainAccountScreen extends Screen {
     private JButton bankStatementButton;
     private JPanel bodyPanel;
@@ -21,6 +22,9 @@ public class MainAccountScreen extends Screen {
     private JButton withdrawButton;
     private JButton depositButton;
 
+    public final static int WIDTH = 700;
+    public final static int HEIGHT = 450;
+
     public MainAccountScreen(JFrameManager frameManager) {
         super(frameManager);
 
@@ -30,7 +34,6 @@ public class MainAccountScreen extends Screen {
 
     @Override
     public void addStyle() {
-
     }
 
     @Override

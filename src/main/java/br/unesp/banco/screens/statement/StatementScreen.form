@@ -33,14 +33,20 @@
             <constraints/>
             <properties>
               <autoCreateRowSorter value="false"/>
+              <background color="-1"/>
               <doubleBuffered value="false"/>
               <fillsViewportHeight value="true"/>
               <font name="IBM Plex Sans" size="16"/>
+              <foreground color="-16777216"/>
+              <gridColor color="-1315088"/>
               <requestFocusEnabled value="false"/>
               <rowHeight value="40"/>
               <rowMargin value="10"/>
+              <rowSelectionAllowed value="false"/>
+              <showHorizontalLines value="true"/>
               <showVerticalLines value="false"/>
               <surrendersFocusOnKeystroke value="false"/>
+              <updateSelectionOnSort value="false"/>
               <verifyInputWhenFocusTarget value="false"/>
             </properties>
           </component>
@@ -54,7 +60,7 @@
           <background color="-16777216"/>
           <borderPainted value="false"/>
           <focusPainted value="false"/>
-          <font name="IBM Plex Sans" size="16"/>
+          <font name="IBM Plex Sans" size="16" style="1"/>
           <foreground color="-1"/>
           <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
@@ -89,6 +95,18 @@
           <text value="Saldo: "/>
         </properties>
       </component>
+      <hspacer id="ff395">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="19" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="ee3bf">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="19" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="30"/>
+          </grid>
+        </constraints>
+      </hspacer>
       <component id="af86f" class="javax.swing.JButton" binding="print">
         <constraints>
           <grid row="0" column="16" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
@@ -97,7 +115,7 @@
           <background color="-14452481"/>
           <borderPainted value="false"/>
           <focusPainted value="false"/>
-          <font name="IBM Plex Sans" size="16"/>
+          <font name="IBM Plex Sans" size="16" style="1"/>
           <foreground color="-1"/>
           <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
@@ -105,16 +123,6 @@
           <text value="Gerar PDF"/>
         </properties>
       </component>
-      <hspacer id="ff395">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="19" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="ee3bf">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="19" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
     </children>
   </grid>
 </form>
