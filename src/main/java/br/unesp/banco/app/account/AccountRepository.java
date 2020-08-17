@@ -21,9 +21,11 @@ public class AccountRepository extends Repository<Long, Account> {
         return result.get(0);
     }
 
-    public List<Account> findAllLikeAccountNumber(String number) throws SQLException {
+    public List<Account> findAllLikeAccountNumber(String selfNumber, String number) throws SQLException {
         String tableName = Account.class.getAnnotation(Entity.class).table();
-        String query = String.format("SELECT * FROM %s WHERE number LIKE %s", tableName, number);
+
+        number = "'%" + number + "%'";
+        String query = String.format("SELECT * FROM %s WHERE number LIKE %s AND number <> %s", tableName, number, selfNumber);
         return this.findAllByQuery(query);
     }
 }
