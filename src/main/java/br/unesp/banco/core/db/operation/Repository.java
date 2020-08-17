@@ -122,5 +122,4 @@ public abstract class Repository<K, T> implements Crud<K, T> {
         return resultArray;
     }
 
-
 }

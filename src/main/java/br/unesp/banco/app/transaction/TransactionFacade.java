@@ -31,18 +31,20 @@ public class TransactionFacade {
         return transactionRepository.create(new Transaction(val, type, LocalDateTime.now(), accountId));
     }
 
-    public Transaction withdraw(Long accountId, Money value) throws Exception {
+    public void withdraw(Long accountId, Money value) throws Exception {
         if (value.getAmount().compareTo(getBalance(accountId).getAmount()) > 0){
             throw new Exception("Valor excede o saldo em conta");
         }
         else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
-            throw new Exception("Valores negativos não serão aceitos");
+            throw new Exception("Valor inválido");
 
-        return create(accountId, TransactionType.WITHDRAW, value);
+        create(accountId, TransactionType.WITHDRAW, value);
     }
 
-    public Transaction makeDeposit(Long accountId, Money value) throws SQLException {
-        return create(accountId, TransactionType.DEPOSIT, value);
+    public void makeDeposit(Long accountId, Money value) throws Exception {
+        if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
+            throw new Exception("Valor inválido");
+        create(accountId, TransactionType.DEPOSIT, value);
     }
 
     public Transaction transfer(Long accountIdRem, Long accountIdDest, Money value) throws Exception {
@@ -50,7 +52,7 @@ public class TransactionFacade {
             throw new Exception("Valor excede o saldo em conta");
         }
         else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
-            throw new Exception("Valores negativos não serão aceitos");
+            throw new Exception("Valor inválido");
         create(accountIdRem, TransactionType.TRANSFER_MADE, value);
         return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
     }
