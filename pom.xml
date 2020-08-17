@@ -43,11 +43,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.21</version>
         </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava3</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>3.0.5</version>
-        </dependency>
     </dependencies>
 
     <build>
