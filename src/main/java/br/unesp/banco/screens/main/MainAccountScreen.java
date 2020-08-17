@@ -7,6 +7,7 @@ import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.screens.deposit.DepositScreen;
 import br.unesp.banco.screens.login.LoginScreen;
 import br.unesp.banco.screens.statement.StatementScreen;
+import br.unesp.banco.screens.transfer.TransferScreen;
 import br.unesp.banco.screens.withdraw.WithdrawScreen;
 
 import javax.swing.*;
@@ -33,7 +34,8 @@ public class MainAccountScreen extends Screen {
         exitButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), LoginScreen.class, "Login"));
         bankStatementButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), StatementScreen.class, "Extrato"));
 
-        withdrawButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), WithdrawScreen.class, WithdrawScreen.WIDTH, WithdrawScreen.HEIGHT,  "Saque"));
+        transferButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), TransferScreen.class, TransferScreen.WIDTH, TransferScreen.HEIGHT, "Saque"));
+        withdrawButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), WithdrawScreen.class, WithdrawScreen.WIDTH, WithdrawScreen.HEIGHT, "Saque"));
         depositButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), DepositScreen.class, DepositScreen.WIDTH, DepositScreen.HEIGHT,  "Depósito"));
     }
 

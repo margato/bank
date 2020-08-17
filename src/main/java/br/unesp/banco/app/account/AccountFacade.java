@@ -3,9 +3,7 @@ package br.unesp.banco.app.account;
 import br.unesp.banco.core.log.Logger;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class AccountFacade {
 
@@ -53,6 +51,14 @@ public class AccountFacade {
 
     public Account getAccountByNumber(String number) throws SQLException {
         return accountRepository.findByAccountNumber(number);
+    }
+
+    public List<Account> getAccountsLikeNumber(String number) throws SQLException {
+        if (number == null || number.isEmpty() || !number.matches("[0-9]+")) {
+            return new ArrayList<>();
+        }
+
+        return accountRepository.findAllLikeAccountNumber(number);
     }
 
     public Account getAccount(Long id) throws Exception {

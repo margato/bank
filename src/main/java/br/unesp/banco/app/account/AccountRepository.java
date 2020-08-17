@@ -20,4 +20,10 @@ public class AccountRepository extends Repository<Long, Account> {
         List<Account> result = this.findAllByQuery(query);
         return result.get(0);
     }
+
+    public List<Account> findAllLikeAccountNumber(String number) throws SQLException {
+        String tableName = Account.class.getAnnotation(Entity.class).table();
+        String query = String.format("SELECT * FROM %s WHERE number LIKE %s", tableName, number);
+        return this.findAllByQuery(query);
+    }
 }
