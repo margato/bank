@@ -1,6 +1,7 @@
 package br.unesp.banco.app.transaction;
 
 
+import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.app.primitives.money.Money;
 
 import java.math.BigDecimal;
@@ -11,9 +12,11 @@ import java.util.List;
 public class TransactionFacade {
 
     private final TransactionRepository transactionRepository;
+    private final AccountFacade accountFacade;
 
-    public TransactionFacade(TransactionRepository transactionRepository) {
+    public TransactionFacade(TransactionRepository transactionRepository, AccountFacade accountFacade) {
         this.transactionRepository = transactionRepository;
+        this.accountFacade = accountFacade;
     }
 
     public List<Transaction> getAllByAccountId(Long accountId) throws SQLException {
@@ -53,8 +56,18 @@ public class TransactionFacade {
         }
         else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
             throw new Exception("Valor inválido");
-        create(accountIdRem, TransactionType.TRANSFER_MADE, value);
-        return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
+        try{
+            accountFacade.getAccount(accountIdRem);
+            create(accountIdRem, TransactionType.TRANSFER_MADE, value);
+            return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
+
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+
+
+
     }
 
     public Money getBalance(Long accountId) throws SQLException {

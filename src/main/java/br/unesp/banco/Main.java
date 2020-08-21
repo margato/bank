@@ -25,7 +25,7 @@ public class Main {
         AccountFacade accountFacade = new AccountFacade(accountRepository);
 
         TransactionRepository transactionRepository = new TransactionRepository(mysql.getConnection(), new TransactionMapper());
-        TransactionFacade transactionFacade = new TransactionFacade(transactionRepository);
+        TransactionFacade transactionFacade = new TransactionFacade(transactionRepository, accountFacade);
 
         StatementFacade statementFacade = new StatementFacade();
 

@@ -2,14 +2,17 @@ package br.unesp.banco.screens.transfer;
 
 import br.unesp.banco.app.account.Account;
 import br.unesp.banco.app.account.AccountFacade;
+import br.unesp.banco.app.primitives.money.Money;
+import br.unesp.banco.app.transaction.TransactionFacade;
+import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.core.utils.Debounce;
+import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,6 +54,32 @@ public class TransferScreen extends Screen {
                     suggestions.setVisible(false);
                 }
             }
+        });
+        confirmButton.addActionListener(e -> {
+            AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
+            TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
+            Double val;
+            try {
+                if (valueInput.getText().isEmpty() || valueInput.getText().matches(".*[a-zA-Z]+.*"))
+                    val = -1.0;
+                else
+                    val =  Double.valueOf(valueInput.getText().replace(',','.'));
+                Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
+                Account accountRem = accountFacade.getAccountByNumber(accountInput.getText());
+                transactionFacade.transfer(account.getId(), accountRem.getId(),new Money(val));
+                Popup.show("Saque","Transferência efetuada!","Ok",null);
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
+
+            } catch (Exception exception) {
+                errorMessage.setText(exception.getMessage());
+
+            }
+
+
+        });
+        backButton.addActionListener(e -> {
+            JFrameLoader.load(getFrameManager(), MainAccountScreen.class, 700, 500, "Banco");
+
         });
     }
 
