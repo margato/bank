@@ -35,6 +35,8 @@ public class TransferScreen extends Screen {
 
     public TransferScreen(JFrameManager frameManager) {
         super(frameManager);
+        AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
+
         suggestions.setVisible(false);
 
         searchRunnable = new Debounce(this::searchForAccounts, 2000);
@@ -56,7 +58,6 @@ public class TransferScreen extends Screen {
             }
         });
         confirmButton.addActionListener(e -> {
-            AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
             TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
             Double val;
             try {
@@ -65,8 +66,8 @@ public class TransferScreen extends Screen {
                 else
                     val =  Double.valueOf(valueInput.getText().replace(',','.'));
                 Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
-                Account accountRem = accountFacade.getAccountByNumber(accountInput.getText());
-                transactionFacade.transfer(account.getId(), accountRem.getId(),new Money(val));
+                Account accountDest = accountFacade.getAccountByNumber(accountInput.getText());
+                transactionFacade.transfer(account.getId(), accountDest.getId(),new Money(val));
                 Popup.show("Saque","Transferência efetuada!","Ok",null);
                 JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
 

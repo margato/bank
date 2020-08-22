@@ -31,6 +31,8 @@ public class WithdrawScreen extends Screen {
 
     public WithdrawScreen(JFrameManager frameManager) {
         super(frameManager);
+        AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
+
         confirmButton.addActionListener(e -> {
             Double val;
             try {
@@ -39,7 +41,6 @@ public class WithdrawScreen extends Screen {
                 else
                      val =  Double.valueOf(valueInput.getText().replace(',','.'));
 
-                AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
                 TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
                 Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());

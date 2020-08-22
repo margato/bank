@@ -56,15 +56,12 @@ public class TransactionFacade {
         }
         else if (value.getAmount().compareTo(BigDecimal.valueOf(0)) < 0)
             throw new Exception("Valor inválido");
-        try{
-            accountFacade.getAccount(accountIdRem);
-            create(accountIdRem, TransactionType.TRANSFER_MADE, value);
-            return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
 
-        }
-        catch (Exception ex){
-            throw ex;
-        }
+        accountFacade.getAccount(accountIdRem);
+        create(accountIdRem, TransactionType.TRANSFER_MADE, value);
+        return create(accountIdDest, TransactionType.TRANSFER_RECEIVED, value);
+
+
 
 
 
