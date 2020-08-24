@@ -29,6 +29,8 @@ import javax.swing.*;
 
         public DepositScreen(JFrameManager frameManager) {
             super(frameManager);
+            AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
+
             confirmButton.addActionListener(e -> {
                 Double val;
                 try {
@@ -36,7 +38,6 @@ import javax.swing.*;
                         val = -1.0;
                     else
                         val =  Double.valueOf(valueInput.getText().replace(',','.'));
-                    AccountFacade accountFacade = (AccountFacade) getFrameManager().getFacades().get("account");
 
                     TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
                     Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());

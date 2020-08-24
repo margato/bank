@@ -49,7 +49,7 @@ public class AccountFacade {
         return accountRepository.create(new Account(number, password));
     }
 
-    public Account getAccountByNumber(String selfNumber, String number) throws SQLException {
+    public Account getAccountByNumber(String number) throws SQLException {
         return accountRepository.findByAccountNumber(number);
     }
 
