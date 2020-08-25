@@ -8,7 +8,6 @@ import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.Screen;
-import br.unesp.banco.screens.login.LoginScreen;
 import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
@@ -42,7 +41,7 @@ import javax.swing.*;
                     TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
                     Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
 
-                    transactionFacade.makeDeposit(account.getId(), new Money(val));
+                    transactionFacade.deposit(account.getId(), new Money(val));
                     Popup.show("Depósito","Depósito aprovado!","Ok",null);
                     JFrameLoader.load(getFrameManager(), MainAccountScreen.class,700, 500, "Banco");
 

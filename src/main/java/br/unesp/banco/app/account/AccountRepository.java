@@ -25,7 +25,7 @@ public class AccountRepository extends Repository<Long, Account> {
         String tableName = Account.class.getAnnotation(Entity.class).table();
 
         number = "'%" + number + "%'";
-        String query = String.format("SELECT * FROM %s WHERE number LIKE %s AND number <> %s", tableName, number, selfNumber);
+        String query = String.format("SELECT * FROM %s WHERE number LIKE %s AND number <> %s LIMIT 10", tableName, number, selfNumber);
         return this.findAllByQuery(query);
     }
 }
