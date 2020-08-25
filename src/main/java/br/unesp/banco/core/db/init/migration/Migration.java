@@ -6,6 +6,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,8 +92,16 @@ public class Migration {
 
         Logger.logDb("Executing migrations...");
         for (String query : queries) {
-            Logger.logDb(query);
-            connection.prepareStatement(query).execute();
+            try {
+                connection.prepareStatement(query).execute();
+                Logger.logDb(query);
+            } catch (SQLSyntaxErrorException e) {
+                Logger.logDb("Could not execute query: \"" + query + "\"");
+                Logger.logDb(e.getMessage());
+                Logger.logDb("Stopping migrations because of exception");
+                Logger.logDb("If you are confident enough, you can change manually .migration_version.yaml to stop seeing this error");
+                return;
+            }
         }
         Logger.logDb("Migrations executed");
 

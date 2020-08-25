@@ -16,3 +16,5 @@ migrations:
     - "ALTER TABLE accounts MODIFY balance DECIMAL(20,2)"
   4:
     - "ALTER TABLE transactions MODIFY date DATETIME"
+  5:
+    - "ALTER TABLE accounts DROP COLUMN balance"
