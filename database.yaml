@@ -1,5 +1,5 @@
 # Driver MySQL
-host: localhost:3306
-user: root
-password: root
-database: banco
+host: remotemysql.com:3306
+user: T7XiF187xT
+password: sox1bX7q9x
+database: T7XiF187xT

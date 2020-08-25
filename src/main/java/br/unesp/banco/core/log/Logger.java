@@ -6,6 +6,18 @@ public class Logger {
         System.out.printf("[UI] %s %s\n", message, clazz.getName());
     }
 
+    public static void welcome() {
+        System.out.println("\n /$$$$$$$   /$$$$$$  /$$   /$$ /$$   /$$\n" +
+                "| $$__  $$ /$$__  $$| $$$ | $$| $$  /$$/\n" +
+                "| $$  \\ $$| $$  \\ $$| $$$$| $$| $$ /$$/ \n" +
+                "| $$$$$$$ | $$$$$$$$| $$ $$ $$| $$$$$/  \n" +
+                "| $$__  $$| $$__  $$| $$  $$$$| $$  $$  \n" +
+                "| $$  \\ $$| $$  | $$| $$\\  $$$| $$\\  $$ \n" +
+                "| $$$$$$$/| $$  | $$| $$ \\  $$| $$ \\  $$\n" +
+                "|_______/ |__/  |__/|__/  \\__/|__/  \\__/\n" +
+                "                                        ");
+    }
+
     public static void logDb(String message) {
         System.out.printf("[DB] %s\n", message);
     }

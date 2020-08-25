@@ -9,6 +9,7 @@ import br.unesp.banco.app.transaction.TransactionMapper;
 import br.unesp.banco.app.transaction.TransactionRepository;
 import br.unesp.banco.core.db.init.MySQL;
 import br.unesp.banco.core.db.init.migration.DatabaseInitializer;
+import br.unesp.banco.core.log.Logger;
 import br.unesp.banco.screens.BankApplication;
 
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
+        Logger.welcome();
+
         MySQL mysql = new MySQL();
         DatabaseInitializer.execute(mysql);
 
