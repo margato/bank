@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class TransactionFacade {
 
@@ -51,8 +52,11 @@ public class TransactionFacade {
     }
 
     public void transfer(String originId, String destinationId, Money value) throws Exception {
+        boolean isAccountValid = Pattern.matches("[0-9]+",destinationId);
         if (destinationId.equals(originId))
             throw new Exception("Você não pode fazer transferir para si mesmo");
+        else if(!isAccountValid)
+            throw new Exception("Conta inválida, tente novamente");
 
         Account originAccount = accountFacade.getAccountByNumber(originId);
         Account destAccount = accountFacade.getAccountByNumber(destinationId);
