@@ -1,9 +1,8 @@
 package br.unesp.banco.screens.openaccount;
 
-import br.unesp.banco.core.log.Logger;
+import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.*;
-import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.screens.login.LoginScreen;
 
 import javax.swing.*;
@@ -43,13 +42,13 @@ public class OpenAccountScreen extends Screen {
         accountFacade.createAccount(accountNumber, new String(passwordInput.getPassword()));
         JFrameLoader.load(getFrameManager(), LoginScreen.class, "Acessar conta");
         Popup.show("Nova conta bancária",
-                   String.format("<html>" +
-                                         "<h1>Conta criada</h1>" +
-                                         "<p>nº da conta: <b>%s</b></p>" +
-                                         "<p>Agora você já pode acessá-la<br/></p>" +
-                                         "</html>", accountNumber),
-                   "Copiar nº da conta para a área de transferência",
-                   () -> (Void) Clipboard.copy(accountNumber));
+                String.format("<html>" +
+                        "<h1>Conta criada</h1>" +
+                        "<p>nº da conta: <b>%s</b></p>" +
+                        "<p>Agora você já pode acessá-la<br/></p>" +
+                        "</html>", accountNumber),
+                "Copiar nº da conta para a área de transferência",
+                () -> (Void) Clipboard.copy(accountNumber));
 
     }
 

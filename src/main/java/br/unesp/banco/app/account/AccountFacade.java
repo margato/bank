@@ -1,6 +1,6 @@
 package br.unesp.banco.app.account;
 
-import br.unesp.banco.core.log.Logger;
+import br.unesp.banco.core.utils.Logger;
 
 import java.sql.SQLException;
 import java.util.*;

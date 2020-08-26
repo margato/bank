@@ -1,6 +1,5 @@
 package br.unesp.banco.screens;
 
-import br.unesp.banco.core.log.Logger;
 import br.unesp.banco.core.ui.JFrameLoader;
 import br.unesp.banco.core.ui.JFrameManager;
 import br.unesp.banco.screens.login.LoginScreen;

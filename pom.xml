@@ -6,7 +6,7 @@
 
     <groupId>br.unesp</groupId>
     <artifactId>banco</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <dependencies>
         <dependency>
             <groupId>com.itextpdf</groupId>

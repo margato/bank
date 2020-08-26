@@ -12,6 +12,8 @@ import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,17 +41,16 @@ public class WithdrawScreen extends Screen {
                 if (valueInput.getText().isEmpty() || valueInput.getText().matches(".*[a-zA-Z]+.*"))
                     val = -1.0;
                 else
-                     val =  Double.valueOf(valueInput.getText().replace(',','.'));
+                    val = Double.valueOf(valueInput.getText().replace(',', '.'));
 
 
                 TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
                 Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
 
                 transactionFacade.withdraw(account.getId(), new Money(val));
-                Popup.show("Saque","Saque aprovado!","Ok",null);
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
-            }
-            catch (Exception ex){
+                Popup.show("Saque", "Saque aprovado!", "Ok", null);
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
+            } catch (Exception ex) {
                 errorMessage.setText(ex.getMessage());
             }
         });
@@ -72,4 +73,5 @@ public class WithdrawScreen extends Screen {
     public JPanel getMainPanel() {
         return bodyPanel;
     }
+
 }

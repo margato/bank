@@ -12,6 +12,8 @@ import br.unesp.banco.core.utils.Debounce;
 import br.unesp.banco.screens.main.MainAccountScreen;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,9 +47,11 @@ public class TransferScreen extends Screen {
 
         this.accountInput.addKeyListener(new KeyListener() {
             @Override
-            public void keyPressed(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {
+            }
 
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
 
             public void keyTyped(KeyEvent e) {
                 searchForAccountIds();
@@ -64,12 +68,12 @@ public class TransferScreen extends Screen {
                 if (valueInput.getText().isEmpty() || valueInput.getText().matches(".*[a-zA-Z]+.*"))
                     val = -1.0;
                 else
-                    val =  Double.valueOf(valueInput.getText().replace(',','.'));
+                    val = Double.valueOf(valueInput.getText().replace(',', '.'));
                 Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
                 Account accountDest = accountFacade.getAccountByNumber(accountInput.getText());
-                transactionFacade.transfer(account.getId(), accountDest.getId(),new Money(val));
-                Popup.show("Saque","Transferência efetuada!","Ok",null);
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class,MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
+                transactionFacade.transfer(account.getId(), accountDest.getId(), new Money(val));
+                Popup.show("Saque", "Transferência efetuada!", "Ok", null);
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
 
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
@@ -106,9 +110,9 @@ public class TransferScreen extends Screen {
 
             try {
                 List<String> accountsLikeNumber = accountFacade.getAccountsLikeNumber(getFrameManager().getUserCredentials().getAccountNumber(), accountNumber)
-                                                               .stream()
-                                                               .map(Account::getNumber)
-                                                               .collect(Collectors.toList());
+                        .stream()
+                        .map(Account::getNumber)
+                        .collect(Collectors.toList());
 
                 boolean thereAreAccountsLike = accountsLikeNumber.size() > 0;
                 suggestions.setVisible(thereAreAccountsLike);

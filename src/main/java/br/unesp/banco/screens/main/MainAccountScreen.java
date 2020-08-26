@@ -36,7 +36,7 @@ public class MainAccountScreen extends Screen {
 
         transferButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), TransferScreen.class, TransferScreen.WIDTH, TransferScreen.HEIGHT, "Saque"));
         withdrawButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), WithdrawScreen.class, WithdrawScreen.WIDTH, WithdrawScreen.HEIGHT, "Saque"));
-        depositButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), DepositScreen.class, DepositScreen.WIDTH, DepositScreen.HEIGHT,  "Depósito"));
+        depositButton.addActionListener(e -> JFrameLoader.load(getFrameManager(), DepositScreen.class, DepositScreen.WIDTH, DepositScreen.HEIGHT, "Depósito"));
     }
 
     @Override

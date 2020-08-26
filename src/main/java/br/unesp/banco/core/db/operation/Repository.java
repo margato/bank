@@ -1,6 +1,6 @@
 package br.unesp.banco.core.db.operation;
 
-import br.unesp.banco.core.log.Logger;
+import br.unesp.banco.core.utils.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package br.unesp.banco.core.db.init.migration;
 
-import br.unesp.banco.core.log.Logger;
+import br.unesp.banco.core.utils.Logger;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
