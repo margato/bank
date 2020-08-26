@@ -1,7 +1,6 @@
 package br.unesp.banco.core.ui;
 
-import br.unesp.banco.core.log.Logger;
-import br.unesp.banco.screens.openaccount.OpenAccountScreen;
+import br.unesp.banco.core.utils.Logger;
 
 import javax.swing.*;
 

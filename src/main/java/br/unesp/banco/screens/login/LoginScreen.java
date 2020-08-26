@@ -1,12 +1,11 @@
 package br.unesp.banco.screens.login;
 
-import br.unesp.banco.core.log.Logger;
-import br.unesp.banco.core.ui.JFrameLoader;
-import br.unesp.banco.core.ui.JFrameManager;
-import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.app.account.Account;
 import br.unesp.banco.app.account.AccountFacade;
 import br.unesp.banco.app.primitives.usercredentials.UserCredentials;
+import br.unesp.banco.core.ui.JFrameLoader;
+import br.unesp.banco.core.ui.JFrameManager;
+import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.screens.main.MainAccountScreen;
 import br.unesp.banco.screens.openaccount.OpenAccountScreen;
 
@@ -34,7 +33,7 @@ public class LoginScreen extends Screen {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
                 getFrameManager().setUserCredentials(new UserCredentials(number, account.getId()));
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "ATM");
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
             }
@@ -61,5 +60,6 @@ public class LoginScreen extends Screen {
                 passwordInput.getBorder(),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
     }
+
 }
 

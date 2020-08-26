@@ -18,6 +18,9 @@ public class AccountRepository extends Repository<Long, Account> {
         String tableName = Account.class.getAnnotation(Entity.class).table();
         String query = String.format("SELECT * FROM %s WHERE number = %s", tableName, number);
         List<Account> result = this.findAllByQuery(query);
+        if (result.size() == 0) {
+            throw new SQLException("Conta não encontrada");
+        }
         return result.get(0);
     }
 

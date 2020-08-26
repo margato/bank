@@ -47,7 +47,6 @@
                   <foreground color="-1"/>
                   <horizontalAlignment value="0"/>
                   <margin top="20" left="20" bottom="20" right="20"/>
-                  <rolloverIcon value="com/sun/deploy/resources/image/aboutjava.png"/>
                   <text value="Voltar"/>
                 </properties>
               </component>
@@ -108,7 +107,6 @@
                       <foreground color="-1"/>
                       <horizontalAlignment value="0"/>
                       <margin top="20" left="20" bottom="20" right="20"/>
-                      <rolloverIcon value="com/sun/deploy/resources/image/aboutjava.png"/>
                       <text value="Confirmar"/>
                     </properties>
                   </component>
