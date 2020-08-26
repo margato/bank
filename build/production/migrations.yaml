@@ -1,0 +1,20 @@
+migrations:
+  0:
+    - "CREATE TABLE IF NOT EXISTS accounts (id INT NOT NULL AUTO_INCREMENT, number VARCHAR(8), password VARCHAR(255), PRIMARY KEY (id)) ENGINE=InnoDB"
+  1:
+    - "ALTER TABLE accounts ADD balance INTEGER"
+  2:
+    - "CREATE TABLE IF NOT EXISTS transactions (
+        id INT NOT NULL AUTO_INCREMENT,
+        value DECIMAL(20,2),
+        type TEXT(8),
+        date DATE,
+        account_id INT NOT NULL,
+        PRIMARY KEY (id)
+      ) ENGINE=InnoDB"
+  3:
+    - "ALTER TABLE accounts MODIFY balance DECIMAL(20,2)"
+  4:
+    - "ALTER TABLE transactions MODIFY date DATETIME"
+  5:
+    - "ALTER TABLE accounts DROP COLUMN balance"

@@ -33,7 +33,7 @@ public class LoginScreen extends Screen {
                 Account account = accountFacade.login(number, password);
                 System.out.println(account);
                 getFrameManager().setUserCredentials(new UserCredentials(number, account.getId()));
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
+                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "ATM");
             } catch (Exception exception) {
                 errorMessage.setText(exception.getMessage());
             }

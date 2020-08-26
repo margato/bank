@@ -10,11 +10,11 @@ import br.unesp.banco.core.ui.Popup;
 import br.unesp.banco.core.ui.Screen;
 import br.unesp.banco.core.utils.Debounce;
 import br.unesp.banco.screens.main.MainAccountScreen;
+import br.unesp.banco.screens.statement.StatementScreen;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import java.awt.*;
 import java.awt.event.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +30,7 @@ public class TransferScreen extends Screen {
     private JTextField accountInput;
     private JComboBox suggestions;
     public final static int WIDTH = 700;
-    public final static int HEIGHT = 480;
+    public final static int HEIGHT = 520;
     private final Runnable searchRunnable;
     private Object lastSelected;
     private static final String NO_SELECTED = "Sugestões";
@@ -41,7 +41,7 @@ public class TransferScreen extends Screen {
 
         suggestions.setVisible(false);
 
-        searchRunnable = new Debounce(this::searchForAccounts, 2000);
+        searchRunnable = new Debounce(this::searchForAccounts, 1000);
 
         suggestions.addItemListener(this::comboBoxChanged);
 
@@ -63,25 +63,25 @@ public class TransferScreen extends Screen {
         });
         confirmButton.addActionListener(e -> {
             TransactionFacade transactionFacade = (TransactionFacade) getFrameManager().getFacades().get("transaction");
-            Double val;
             try {
-                if (valueInput.getText().isEmpty() || valueInput.getText().matches(".*[a-zA-Z]+.*"))
-                    val = -1.0;
-                else
-                    val = Double.valueOf(valueInput.getText().replace(',', '.'));
-                Account account = accountFacade.getAccount(frameManager.getUserCredentials().getId());
-                Account accountDest = accountFacade.getAccountByNumber(accountInput.getText());
-                transactionFacade.transfer(account.getId(), accountDest.getId(), new Money(val));
+                BigDecimal value = new BigDecimal(valueInput.getText().replace(",", "."));
+
+                String origin = frameManager.getUserCredentials().getAccountNumber();
+                String dest = accountInput.getText();
+
+                transactionFacade.transfer(origin, dest, new Money(value));
                 Popup.show("Saque", "Transferência efetuada!", "Ok", null);
-                JFrameLoader.load(getFrameManager(), MainAccountScreen.class, MainAccountScreen.WIDTH, MainAccountScreen.HEIGHT, "Banco");
 
-            } catch (Exception exception) {
-                errorMessage.setText(exception.getMessage());
-
+                JFrameLoader.load(getFrameManager(), StatementScreen.class, "Extrato");
+            } catch (NumberFormatException ex) {
+                errorMessage.setText("Dados inválidos");
+                ex.printStackTrace();
+            } catch (Exception ex) {
+                errorMessage.setText(ex.getMessage());
+                ex.printStackTrace();
             }
-
-
         });
+
         backButton.addActionListener(e -> {
             JFrameLoader.load(getFrameManager(), MainAccountScreen.class, 700, 500, "Banco");
 
@@ -144,6 +144,10 @@ public class TransferScreen extends Screen {
         valueInput.setBorder(BorderFactory.createCompoundBorder(
                 valueInput.getBorder(),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
+        valueLabel.setBorder(BorderFactory.createCompoundBorder(
+                valueLabel.getBorder(),
+                BorderFactory.createEmptyBorder(10, 0, 0, 0)));
 
         accountInput.setSize(accountInput.getWidth(), 100);
         accountInput.setBorder(BorderFactory.createCompoundBorder(
