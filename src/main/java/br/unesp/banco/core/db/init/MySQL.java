@@ -11,10 +11,11 @@ public class MySQL {
     private Connection connection;
 
     public MySQL() {
-        Logger.logDb("Initializing MySQL remote connection");
         Credential credential = new Credential();
         String baseUrl = String.format("jdbc:mysql://%s", credential.getHost());
         String url = String.format("%s?serverTimezone=UTC", baseUrl);
+
+        Logger.logDb("Initializing MySQL connection: " + url);
 
         try {
             connection = DriverManager.getConnection(url, credential.getUser(), credential.getPassword());
@@ -25,7 +26,7 @@ public class MySQL {
 
             baseUrl += "/" + credential.getDatabase() + "?serverTimezone=UTC";
             connection = DriverManager.getConnection(baseUrl, credential.getUser(), credential.getPassword());
-            Logger.logDb("Connection established: " + url);
+            Logger.logDb("Connection established");
         } catch (SQLException e) {
             e.printStackTrace();
             System.exit(-1);
